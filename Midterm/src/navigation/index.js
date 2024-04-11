@@ -28,13 +28,6 @@ const Navigation = () => {
 const MyTab = () => {
     return(
         <Tab.Navigator
-            tabBarOptions={{
-                showlable: false,
-                style: {
-                    backgroundColor:'#1D1D1D',
-                    height:60,
-                }, 
-            }}
             screenOptions={({route}) => ({
                 tabBarIcon:({ focused, size, Colors}) => {
                     let iconName;
@@ -53,8 +46,11 @@ const MyTab = () => {
                 tabBarInactiveBackgroundColor:'#1D1D1D',
                 tabBarActiveTintColor:'#FFF',
                 tabBarInactiveTintColor:'#FFF',
+                tabBarShowLabel:false,
+                tabBarStyle:{
+                    height:60,
+                }
             })}
-            
             >
                 <Tab.Screen name="Home" component={HomeScreen} />
                 <Tab.Screen name="Menu" component={MenuScreen}/>
