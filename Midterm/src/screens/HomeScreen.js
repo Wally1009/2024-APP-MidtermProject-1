@@ -1,24 +1,43 @@
 import React from 'react';
-import { Text } from "react-native";
+import { StyleSheet, ImageBackground } from 'react-native';
+import { Text, Pressable } from "@gluestack-ui/themed";
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import Header from "../components/Header"
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
+
 const HomeScreen = () => {
     return(
         <SafeAreaProvider>
-            <SafeAreaView>
+            <SafeAreaView style={{flex: 1 }}>
                 <Header/>
-                <MaterialCommunityIcons
-                    name='magnify'
-                    size={24}
-                    style = {{ color:'#FFFFFF', marginRight: 20, position: 'relative', top: -55, left: 315}}
-                /> 
-                <Text style={{ textAlign: "center" }}>Wish</Text>
+                 
+                <ImageBackground style={styles.image} source={require('../img/image 1.png')}>
+                    <Text style={styles.text}>WISH</Text>
+                </ImageBackground>
             </SafeAreaView>
         </SafeAreaProvider>
     );
 };
+
+const styles = StyleSheet.create({
+    text:{
+        fontFamily:"Roboto",
+        fontStyle:'italic',
+        fontSize:96,
+        letterSpacing:10,
+        color:"#FFF",
+        textAlign: "center",
+        top:250
+    },
+    image:{
+        flex:1,
+        width:'auto',
+        height:640,
+        resizeMode:'cover'
+    },
+})
+
 
 export default HomeScreen;
