@@ -14,6 +14,8 @@ import MenuScreen from "../screens/MenuScreen";
 import ShoppingCartScreen from "../screens/ShoppingCartScreen";
 import AccountScreen from "../screens/AccountScreen";
 import { Colors } from "react-native/Libraries/NewAppScreen";
+import Men_PerfumeDetailScreen from "../screens/Men_PerfumeDetailScreen";
+import Men_PerfumeScreen from "../screens/Men_PerfumeScreen";
 
 const Tab = createBottomTabNavigator();
 
