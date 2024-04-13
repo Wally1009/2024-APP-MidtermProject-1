@@ -6,7 +6,7 @@ import Navigation from './src/navigation';
 
 const App = () => {
   return(
-  <SafeAreaProvider style={{backgroundColor:"ffffff"}}>
+  <SafeAreaProvider style={{backgroundColor:"#FFF"}}>
     <GluestackUIProvider config={config}>
       <Navigation/>
     </GluestackUIProvider>

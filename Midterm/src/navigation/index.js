@@ -29,7 +29,7 @@ const MyTab = () => {
     return(
         <Tab.Navigator
             screenOptions={({route}) => ({
-                tabBarIcon:({ focused, size, Colors}) => {
+                tabBarIcon:({ focused, size }) => {
                     let iconName;
                     if ( route.name === 'Home'){
                         iconName = focused ? 'home' : 'home-outline';
@@ -49,7 +49,8 @@ const MyTab = () => {
                 tabBarShowLabel:false,
                 tabBarStyle:{
                     height:60,
-                }
+                },
+                headerShown:false
             })}
             >
                 <Tab.Screen name="Home" component={HomeScreen} />
