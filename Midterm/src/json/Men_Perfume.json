@@ -1,0 +1,42 @@
+[
+    {
+    "title": "Perfume",
+    "data": [
+       {
+         "title": "CKK Perfume",
+         "money": "NT$3000",
+         "key":0,
+         "description": "中性香水具備獨特的木質調，剛硬卻又柔和，誘使您近身探索。"
+       },
+       {
+         "title": "HERO Perfume",
+         "money": "NT$7000",
+         "key":1,
+         "description": "TMLB立領設計毛毛外套,白色底色搭配滿版logo,保暖的同時兼顧時尚"
+       },
+       {
+         "title": "Dior曠野之心",
+         "money": "NT$5000",
+         "key":2,
+         "description": "輕薄的牛仔外套，讓你在夏天依然可以保持酷炫"
+       },
+       {
+         "title": "Fire Perfume",
+         "money": "NT$4000",
+         "key":3,
+         "description": "長版的休閒西裝外套，不論是職場上班或是一般上學都很適合喔"
+      },
+      {
+         "title": "Fahrenheit",
+         "money": "NT$6000",
+         "key":4,
+         "description": "Balenciagaa的滿版logo毛毛外套,黑色底色搭配白色logo,Rupert推薦是能登上VOGUE的時尚"
+      },
+      {
+         "title": "Homme",
+         "money": "NT$4000",
+         "key":5,
+         "description": "底色大地色,搭配Guci滿版設計,穿上去逛街彷彿遊走在巴黎街頭,看著101都像是在看La Tour Eiffel"
+      }
+    ]}
+ ]
