@@ -10,11 +10,7 @@ const MenuScreen = () => {
         <SafeAreaProvider>
             <SafeAreaView>
                 <Header/>
-                <MaterialCommunityIcons
-                    name='magnify'
-                    size={24}
-                    style = {styles.magnify}
-                /> 
+                
                 <Text style={{ textAlign: "center" }}>this is menu</Text>
             </SafeAreaView>
         </SafeAreaProvider>

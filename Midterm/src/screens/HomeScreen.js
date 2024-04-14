@@ -4,7 +4,6 @@ import { Text, Pressable } from "@gluestack-ui/themed";
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import Header from "../components/Header"
 
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
 const HomeScreen = () => {
@@ -12,7 +11,6 @@ const HomeScreen = () => {
         <SafeAreaProvider>
             <SafeAreaView style={{flex: 1 }}>
                 <Header/>
-                 
                 <ImageBackground style={styles.image} source={require('../img/image 1.png')}>
                     <Text style={styles.text}>WISH</Text>
                 </ImageBackground>
