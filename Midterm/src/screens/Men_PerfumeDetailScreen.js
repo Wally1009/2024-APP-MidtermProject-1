@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Image, Text } from 'react-native';
+import { StyleSheet, Image, Text,View } from 'react-native';
 import { Center, Box, Button, ButtonText, VStack, HStack } from "@gluestack-ui/themed";
 
 
@@ -10,8 +10,10 @@ import img2 from '../../src/Men_Perfume_img/image Dior曠野之心.png';
 import img3 from '../../src/Men_Perfume_img/image Fire Perfume.png';
 import img4 from '../../src/Men_Perfume_img/image Fahrenheit.png';
 import img5 from '../../src/Men_Perfume_img/image Homme.png';
-
+import img6 from '../../src/img/cart-plus.png';
+import img7 from '../../src/img/heart-plus-outline.png';
 const MenPerfumeimgs = [img0, img1, img2, img3, img4, img5];
+const plusclothesicon=[img6,img7];
 
 const Men_PerfumeDetailScreen = ({ route }) => {
     const { title,
@@ -24,7 +26,7 @@ const Men_PerfumeDetailScreen = ({ route }) => {
           <VStack>
             <Center pt={50} pb={20}>
               <Image
-                style={{ width: 210, height: 300 }}
+                style={{ width: 221, height: 316 }}
                 source={MenPerfumeimgs[key]}
               />
             </Center>
@@ -32,27 +34,32 @@ const Men_PerfumeDetailScreen = ({ route }) => {
             <Box pt={10} pb={10}>
               <Center>
                 <Text style={styles.title}>{title}</Text>
-                <Text style={styles.money}>{money}</Text>
+                <Text style={styles.descriptions}>{descriptions}</Text>
               </Center>
             </Box>
-            <Center>
-              <Text style={styles.descriptions}>{descriptions}</Text>
-            </Center>
-    
-            <Center paddingBottom={200}>
-              <Button
-                width={200}
-                bgColor='#6200EE'
+            <Center paddingBottom={110}>
+            <Button
+                width={400}
+                height={60}
+                bgColor='black'
                 onPress={() => null}
+                style={{ position: 'absolute', bottom: 0 }}
               >
-                <ButtonText>
-                  BUY NOW FOR $46.99
+                <ButtonText position="absolute" left={20} top={10}>
+                  <Text style={styles.clothesname}>{title}</Text>
+                  {"\n"}
+                  <Text style={styles.clothesname}>{money}</Text>
+                  
                 </ButtonText>
+                <View style={styles.iconContainer}>
+                    <Image source={plusclothesicon[0]} style={styles.icon} />
+                    <Image source={plusclothesicon[1]} style={[styles.icon, styles.secondIcon]} />
+                  </View>
               </Button>
             </Center>
-    
           </VStack>
         </Center>
+        
     
     );
 }
@@ -64,6 +71,11 @@ const styles = StyleSheet.create({
       fontWeight: "bold",
       paddingTop: 10,
       paddingBottom: 2
+    },
+    clothesname:{
+      fontFamily: "Roboto",
+      fontSize: 15,
+      textAlign:'left'
     },
     money: {
       fontFamily: "Roboto",
@@ -80,7 +92,9 @@ const styles = StyleSheet.create({
       fontSize: 14,
       fontFamily: "Roboto",
       lineHeight: 24,
-      paddingBottom: 30
+      paddingBottom: 30,
+      marginTop:50,
+      color:'black'
     },
     buy_content: {
       fontSize: 14,
@@ -88,6 +102,21 @@ const styles = StyleSheet.create({
       lineHeight: 16,
       paddingBottom: 30,
       fontWeight: 500
+    },
+    icon: {
+      width: 24,
+      height: 24,
+      marginHorizontal: 30,
+      
+    },
+    secondIcon: {
+      marginLeft: 0,
+    },
+    iconContainer:{
+      position: "absolute",
+      bottom: 21,
+      right: 10,
+      flexDirection: "row",
     }
   })
   
