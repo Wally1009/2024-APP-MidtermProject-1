@@ -7,11 +7,11 @@ const Men_PerfumeList = ({MenPerfumeList}) => {
         <>
             <Text style={style.title}>{section.title}</Text>
             <FlatList
-                horizontal={true}
                 data={section.data}
                 renderItem={({ item }) => <Men_PerfumeDetail MenPerfumeDetail={item} />}
                 showsHorizontalScrollIndicator={false}
                 keyExtractor={item => item.key}
+                numColumns={2}
             />
         </>
     );
@@ -35,10 +35,11 @@ const Men_PerfumeList = ({MenPerfumeList}) => {
 const style = StyleSheet.create({
     title: {
       fontFamily: "Roboto",
-      fontSize: 24,
+      fontSize: 32,
       fontWeight: "bold",
       paddingLeft: 10,
-      paddingTop:10
+      paddingTop:40,
+      paddingBottom:30
     }
   })
   
