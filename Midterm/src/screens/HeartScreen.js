@@ -1,17 +1,13 @@
 import React from 'react';
 import { Text, StyleSheet } from "react-native";
 import { Box, Center } from '@gluestack-ui/themed';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import Header from "../components/Header"
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const HeartScreen = () =>{
     return(
-        <SafeAreaProvider>
-            <SafeAreaView>
-                <Header/>
-                <Text style={styles.heart}>珍藏</Text>
+        <Box>
+            <Text style={styles.heart}>珍藏</Text>
                 <Center style={{top:170}}>
                     <MaterialCommunityIcons
                     name='heart-plus-outline'
@@ -25,12 +21,9 @@ const HeartScreen = () =>{
                         </Center>
                     </Box>
                 </Center>
-            </SafeAreaView>
-        </SafeAreaProvider>
+        </Box> 
     );
 };
-
-
 
 const styles = StyleSheet.create({
     heart:{
@@ -38,6 +31,7 @@ const styles = StyleSheet.create({
         fontSize:32,
         fontWeight:'bold',
         marginLeft:25,
+        marginTop:20
     },
     magnify:{
         marginLeft:20,

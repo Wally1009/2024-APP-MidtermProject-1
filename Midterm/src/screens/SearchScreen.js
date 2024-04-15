@@ -1,14 +1,11 @@
 import React from "react";
-import { Text } from "react-native";
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { Box, Text } from "@gluestack-ui/themed";
 
 const SearchScreen = () => {
     return(
-        <SafeAreaProvider>
-            <SafeAreaView>
-                <Text style={{ textAlign: "center" }}>this is Search</Text>
-            </SafeAreaView>
-        </SafeAreaProvider>
+        <Box>
+            <Text style={{ textAlign: "center" }}>this is Search</Text>
+        </Box>   
     );
 };
 
