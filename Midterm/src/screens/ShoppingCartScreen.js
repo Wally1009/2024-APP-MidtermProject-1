@@ -1,33 +1,28 @@
 import React from 'react';
-import { Text, StyleSheet } from "react-native";
-import { Box, Center } from '@gluestack-ui/themed';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import Header from "../components/Header"
+import { StyleSheet } from "react-native";
+import { Box, Center, Text } from '@gluestack-ui/themed';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
 const ShoppingCartScreen = () => {
     return(
-        <SafeAreaProvider>
-            <SafeAreaView>
-                <Header/>
-                <Text style={styles.cart}>購物車</Text>
-                <Center style={{top:170}}>
-                    <MaterialCommunityIcons
-                    name='cart-plus'
-                    size={24}
-                    styles={styles.cartplus}
-                    /> 
-                    <Box>
-                        <Center>
-                            <Text style={styles.text}>您的購物車是空的</Text>
-                            <Text style={styles.text}>添加商品到購物車吧</Text>
-                        </Center>
-                    </Box>
-                </Center>
-            </SafeAreaView>
-        </SafeAreaProvider>
+        <Box>
+            <Text style={styles.cart}>購物車</Text>
+            <Center style={{top:170}}>
+                <MaterialCommunityIcons
+                name='cart-plus'
+                size={24}
+                styles={styles.cartplus}
+                /> 
+                <Box>
+                    <Center>
+                        <Text style={styles.text}>您的購物車是空的</Text>
+                        <Text style={styles.text}>添加商品到購物車吧</Text>
+                    </Center>
+                </Box>
+            </Center>
+        </Box>  
     );
 };
 

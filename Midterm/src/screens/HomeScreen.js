@@ -1,21 +1,14 @@
 import React from 'react';
 import { StyleSheet, ImageBackground } from 'react-native';
-import { Text, Pressable } from "@gluestack-ui/themed";
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import Header from "../components/Header"
-
-
+import { Text, Box } from "@gluestack-ui/themed";
 
 const HomeScreen = () => {
     return(
-        <SafeAreaProvider>
-            <SafeAreaView style={{flex: 1 }}>
-                <Header/>
-                <ImageBackground style={styles.image} source={require('../img/image 1.png')}>
+        <Box style={{flex: 1 }}>
+            <ImageBackground style={styles.image} source={require('../img/image 1.png')}>
                     <Text style={styles.text}>WISH</Text>
-                </ImageBackground>
-            </SafeAreaView>
-        </SafeAreaProvider>
+            </ImageBackground>
+        </Box>
     );
 };
 
@@ -32,7 +25,7 @@ const styles = StyleSheet.create({
     image:{
         flex:1,
         width:'auto',
-        height:640,
+        height:650,
         resizeMode:'cover'
     },
 })

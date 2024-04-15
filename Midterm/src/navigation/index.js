@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { NavigationContainer, useTheme } from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { Box, Text, KeyboardAvoidingView  } from "@gluestack-ui/themed";
+import { Box, Text, KeyboardAvoidingView, Pressable } from "@gluestack-ui/themed";
 
-import { Pressable, StyleSheet, Platform } from "react-native";
+import { StyleSheet, Platform } from "react-native";
 
 import HomeScreen from "../screens/HomeScreen";
 import MenuScreen from "../screens/MenuScreen";
@@ -31,6 +31,7 @@ const Navigation = () => {
         >
             <NavigationContainer>
                 <MyTab/>
+                
             </NavigationContainer>
         </KeyboardAvoidingView>
     )
@@ -45,11 +46,11 @@ const MyTab = () => {
                     let iconName;
                     if ( route.name === 'Homestack'){
                         iconName = focused ? 'home' : 'home-outline';
-                    } else if ( route.name === 'Menu'){
+                    } else if ( route.name === 'Menustack'){
                         iconName = focused ? 'dots-horizontal-circle' : 'dots-horizontal-circle-outline';
                     } else if ( route.name === 'Cartstack'){
                         iconName = focused ? 'cart' : 'cart-outline';
-                    } else if ( route.name === 'Account'){
+                    } else if ( route.name === 'Accountstack'){
                         iconName = focused ? 'account' : 'account-outline';
                     }
                     return <MaterialCommunityIcons name={iconName} size={size} color='#FFFFFF' />
@@ -66,32 +67,33 @@ const MyTab = () => {
             })}
         >
             <Tab.Screen name="Homestack" component={Homestack}/>
-            <Tab.Screen name="Menu" component={MenuScreen}/>
+            <Tab.Screen name="Menustack" component={MenuStack}/>
             <Tab.Screen name="Cartstack" component={Cartstack}/>
-            <Tab.Screen name="Account" component={AccountScreen}/>
+            <Tab.Screen name="Accountstack" component={Accountstack}/>
         </Tab.Navigator>
     )
 }
 
 const Homestack = ({ navigation }) => {
     return(
-        <Stack.Navigator
-            screenOptions={{
-                headerShown:false,
-            }}
-        >
+        <Stack.Navigator>
             <Stack.Screen 
                 name="Home"
                 component={HomeScreen}
                 options={{
                         title:"",
+                        headerStyle:{
+                            backgroundColor: "#000000",
+                            height: 60,
+                        },
                         headerRight: () => (
-                            <MaterialCommunityIcons
-                                name={'magnify'}
-                                size={24}
-                                style = {styles.magnify} 
-                                onPress={() => navigation.navigate('Search')}
-                            />    
+                            <Pressable onPress={() => navigation.navigate('Search')}>
+                                <MaterialCommunityIcons
+                                    name={'magnify'}
+                                    size={24}
+                                    style = {styles.icon} 
+                                />    
+                            </Pressable>
                         ),
                     }}
             />
@@ -104,33 +106,68 @@ const Homestack = ({ navigation }) => {
     ); 
 }
 
+const MenuStack = ({ navigation }) => {
+    return(
+        <Stack.Navigator>
+            <Stack.Screen 
+                name="Menu"
+                component={MenuScreen}
+                options={{
+                        title:"",
+                        headerStyle:{
+                            backgroundColor: "#000000",
+                            height: 60,
+                        },
+                        headerRight: () => (
+                            <Pressable onPress={() => navigation.navigate('Search')}>
+                                <MaterialCommunityIcons
+                                    name={'magnify'}
+                                    size={24}
+                                    style = {styles.icon} 
+                                />    
+                            </Pressable>
+                        ),
+                    }}
+            />
+            <Stack.Screen
+                name="Search"
+                component={SearchScreen}
+                options={{title:'Search'}}
+            />
+        </Stack.Navigator>
+    ); 
+
+}
+
 const Cartstack =({ navigation }) => {
     return(
-        <Stack.Navigator
-            screenOptions={{
-                headerShown:false,
-            }}
-        >
+        <Stack.Navigator>
             <Stack.Screen  
                 name="Cart"
                 component={ShoppingCartScreen}
                 options={{
                     title:"",
+                    headerStyle:{
+                        backgroundColor: "#000000",
+                        height: 60,
+                    },
                     headerLeft: () => (
-                        <MaterialCommunityIcons
-                            name={'heart-outline'}
-                            size={24}
-                            onPress={() => navigation.navigate('Heart')}
-                            style={{ marginLeft:20, color:'#FFFFFF', position:'relative' }}
-                        />
+                        <Pressable onPress={() => navigation.navigate('Heart')}>
+                            <MaterialCommunityIcons
+                                name={'heart-outline'}
+                                size={24}
+                                style={styles.icon}
+                            />
+                        </Pressable>
                     ),
                     headerRight: () => (
-                        <MaterialCommunityIcons
-                            name={'magnify'}
-                            size={24}
-                            onPress={() => navigation.navigate('Search')}
-                            style={styles.magnify}
-                        />
+                        <Pressable onPress={() => navigation.navigate('Search')}>
+                            <MaterialCommunityIcons
+                                name={'magnify'}
+                                size={24}
+                                style={styles.icon}
+                            />
+                        </Pressable>
                     ),
                 }}
             />
@@ -139,22 +176,27 @@ const Cartstack =({ navigation }) => {
                 component={HeartScreen}
                 options={{
                     title:"",
+                    headerStyle:{
+                        backgroundColor: "#000000",
+                        height: 60,
+                    },
                     headerLeft: () => (
-                        <Pressable onPress={() => navigation.goBack()}>
+                        <Pressable onPress={() => navigation.navigate('Cart')}>
                             <MaterialCommunityIcons
                                 name={'cart-outline'}
                                 size={24}
-                                style={{ marginLeft:20, color:'#FFFFFF', position:'relative' }}
+                                style={styles.icon}
                             />
                         </Pressable>
                     ),
                     headerRight: () => (
-                        <MaterialCommunityIcons
-                            name={'magnify'}
-                            size={24}
-                            onPress={() => navigation.navigate('Search')}
-                            style={styles.magnify}
-                        />
+                        <Pressable onPress={() => navigation.navigate('Search')}>
+                            <MaterialCommunityIcons
+                                name={'magnify'}
+                                size={24}
+                                style={styles.icon}
+                            />
+                        </Pressable>
                     ),
                 }}
             />
@@ -167,14 +209,43 @@ const Cartstack =({ navigation }) => {
     );
 }
 
+const Accountstack = ({ navigation }) => {
+    return(
+        <Stack.Navigator>
+            <Stack.Screen 
+                name="Account"
+                component={AccountScreen}
+                options={{
+                        title:"",
+                        headerStyle:{
+                            backgroundColor: "#000000",
+                            height: 60,
+                        },
+                        headerRight: () => (
+                            <Pressable onPress={() => navigation.navigate('Search')}>
+                                <MaterialCommunityIcons
+                                    name={'magnify'}
+                                    size={24}
+                                    style = {styles.icon} 
+                                />    
+                            </Pressable>
+                        ),
+                    }}
+            />
+            <Stack.Screen
+                name="Search"
+                component={SearchScreen}
+                options={{title:'Search'}}
+            />
+        </Stack.Navigator>
+    ); 
+}
+
 const styles = StyleSheet.create({
-    magnify:{
-        marginLeft:20,
+    icon:{
+        marginRight:10,
+        marginBottom:20,
         color:'#FFFFFF',
-        position:'relative',
-        top:-45,
-        left:325,
-        zIndex:1000
     },
 })
 
