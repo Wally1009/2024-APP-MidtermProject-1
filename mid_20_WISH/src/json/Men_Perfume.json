@@ -1,0 +1,42 @@
+[
+  {
+  "title": "Perfume",
+  "data": [
+     {
+       "title": "CKK Perfume",
+       "money": "NT$3000",
+       "key":0,
+       "descriptions": "中性香水具備獨特的木質調，剛硬卻又柔和，誘使您近身探索。"
+     },
+     {
+       "title": "HERO Perfume",
+       "money": "NT$7000",
+       "key":1,
+       "descriptions": "獨具男人味的木質調搭上一點辛辣感，透露出英雄的高傲氣概又不失拯救的溫柔"
+     },
+     {
+       "title": "Dior曠野之心",
+       "money": "NT$5000",
+       "key":2,
+       "descriptions": "紀崴推薦，琥珀香氣搭上淡淡的木頭香，連變異的螃蟹都變成皇帝蟹"
+     },
+     {
+       "title": "Fire Perfume",
+       "money": "NT$4000",
+       "key":3,
+       "descriptions": "散發著自信、完美和精緻感的你，一定是一位成功的男人吧"
+    },
+    {
+       "title": "Fahrenheit",
+       "money": "NT$6000",
+       "key":4,
+       "descriptions": "木質以及皮革調加上大量的柑橘香，大膽的嘗試配上勇敢的你，趕快入手吧"
+    },
+    {
+       "title": "Homme",
+       "money": "NT$4000",
+       "key":5,
+       "descriptions": "淡淡的木質調搭上層層花香，剛毅中透露出你的紳士風範，一定適合優雅的你吧"
+    }
+  ]}
+]
