@@ -1,6 +1,7 @@
-import React,{useState} from 'react';
-import { StyleSheet, Image, Text,View } from 'react-native';
-import { Center, Box, Button, ButtonText, VStack, HStack,Pressable } from "@gluestack-ui/themed";
+import React from 'react';
+import { StyleSheet, Image, Text, View } from 'react-native';
+import { Center, Box, Button, ButtonText, VStack, Pressable } from "@gluestack-ui/themed";
+import { useFavorites } from '../Context/FavoriteContext';
 
 import img0 from '../../src/Men_Perfume_img/image CKK Perfume.png';
 import img1 from '../../src/Men_Perfume_img/image HERO Perfume.png';
@@ -10,22 +11,24 @@ import img4 from '../../src/Men_Perfume_img/image Fahrenheit.png';
 import img5 from '../../src/Men_Perfume_img/image Homme.png';
 import img6 from '../../src/img/cart-plus.png';
 import img7 from '../../src/img/heart-plus-outline.png';
-import img8 from '../../src/img/heart-plus-outline-fullwhite.png'
+import img8 from '../../src/img/heart-plus-outline-fullwhite.png';
+
 const MenPerfumeimgs = [img0, img1, img2, img3, img4, img5];
 const plusclothesicon=[img6,img7];
 
-const Men_PerfumeDetailScreen = ({ route,heartClicked, setHeartClicked }) => {
-    const { title,
-            money,
-            key,
-            descriptions,
-           
-    } = route.params;
-    
-    const [heartIcon,setHeartIcon]=useState(heartClicked ? img8 : img7)
+const Men_PerfumeDetailScreen = ({ route }) => {
+    const { title, money, key, descriptions } = route.params;
+    const { favorites, addFavorite, removeFavorite } = useFavorites();
+    const isFavorite = favorites.includes(key);
+
     const toggleHeartIcon = () => {
-      setHeartIcon(prevIcon => prevIcon === img7 ? img8 : img7); // 切换心形图标的状态
+        if (isFavorite) {
+            removeFavorite(key);
+        } else {
+            addFavorite(key);
+        }
     };
+
     return (
         <Center backgroundColor='#fff' >
           <VStack>
@@ -59,15 +62,13 @@ const Men_PerfumeDetailScreen = ({ route,heartClicked, setHeartClicked }) => {
                 <View style={styles.iconContainer}>
                     <Image source={plusclothesicon[0]} style={styles.icon} />
                     <Pressable onPress={toggleHeartIcon}>
-                    <Image source={heartIcon} style={[styles.icon, styles.secondIcon]} />
+                    <Image source={isFavorite ? img8 : img7} style={[styles.icon, styles.secondIcon]} />
                     </Pressable>
                   </View>
               </Button>
             </Center>
           </VStack>
         </Center>
-        
-    
     );
 }
 
@@ -125,6 +126,6 @@ const styles = StyleSheet.create({
       right: 10,
       flexDirection: "row",
     }
-  })
+  });
   
   export default Men_PerfumeDetailScreen;
