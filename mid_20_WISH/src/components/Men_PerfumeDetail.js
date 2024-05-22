@@ -32,7 +32,7 @@ const Men_PerfumeDetail = ({ MenPerfumeDetail, index }) => {
     };
 
     return (
-        <Box p={10} marginX={1} marginBottom={2} borderRadius={3} shadow={2} position="relative">
+        <Box p={10} marginX={1} marginBottom={2} borderRadius={3} shadow={2} position="relative" style={styles.container}>
             <VStack bg="#fff">
                 <Pressable onPress={() => navigate('Detail', MenPerfumeDetail)} style={[styles.pressable, isLastTwo && styles.lastTwo]}>
                     <Image source={MenPerfumeimgs[MenPerfumeDetail.key]} style={{ width: 140, height: 200 }} />
@@ -56,6 +56,10 @@ const Men_PerfumeDetail = ({ MenPerfumeDetail, index }) => {
 };
 
 const styles = StyleSheet.create({
+    container:{
+        flex:1,
+        alignItems:'center',
+    },
     pressable: {
         marginBottom: -10, // 調整其他商品的 marginBottom
     },
@@ -75,7 +79,7 @@ const styles = StyleSheet.create({
     iconContainer: {
         position: "absolute",
         bottom: 21,
-        right: 0,
+        right: -4,
         flexDirection: "row",
     },
     icon: {
