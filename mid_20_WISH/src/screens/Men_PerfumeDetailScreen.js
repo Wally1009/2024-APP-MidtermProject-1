@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Image, Text, View } from 'react-native';
 import { Center, Box, Button, ButtonText, VStack, Pressable } from "@gluestack-ui/themed";
 import { useFavorites } from '../Context/FavoriteContext';
@@ -20,6 +20,7 @@ const Men_PerfumeDetailScreen = ({ route }) => {
     const { title, money, key, descriptions } = route.params;
     const { favorites, addFavorite, removeFavorite } = useFavorites();
     const isFavorite = favorites.includes(key);
+    const [isPressed, setIsPressed] = useState(false);
 
     const toggleHeartIcon = () => {
         if (isFavorite) {
@@ -60,7 +61,13 @@ const Men_PerfumeDetailScreen = ({ route }) => {
                   
                 </ButtonText>
                 <View style={styles.iconContainer}>
-                    <Image source={plusclothesicon[0]} style={styles.icon} />
+                    <Pressable 
+                        onPressIn={() => setIsPressed(true)} 
+                        onPressOut={() => setIsPressed(false)}
+                        style={[styles.iconWrapper, isPressed && styles.iconPressed]}
+                    >
+                        <Image source={plusclothesicon[0]} style={styles.icon}/>
+                    </Pressable>
                     <Pressable onPress={toggleHeartIcon}>
                     <Image source={isFavorite ? img8 : img7} style={[styles.icon, styles.secondIcon]} />
                     </Pressable>
@@ -115,7 +122,6 @@ const styles = StyleSheet.create({
       width: 24,
       height: 24,
       marginHorizontal: 30,
-      
     },
     secondIcon: {
       marginLeft: 0,
@@ -125,6 +131,12 @@ const styles = StyleSheet.create({
       bottom: 21,
       right: 10,
       flexDirection: "row",
+    },
+    iconWrapper: {
+      borderRadius: 12,
+    },
+    iconPressed: {
+      backgroundColor: 'gray',
     }
   });
   

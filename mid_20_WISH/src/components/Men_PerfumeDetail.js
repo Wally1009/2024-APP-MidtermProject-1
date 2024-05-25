@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { StyleSheet, Image, Text, View } from 'react-native';
 import { Box, VStack, Pressable } from "@gluestack-ui/themed";
 import { useNavigation } from "@react-navigation/native";
@@ -22,6 +22,7 @@ const Men_PerfumeDetail = ({ MenPerfumeDetail, index }) => {
     const { favorites, addFavorite, removeFavorite } = useFavorites();
     const isLastTwo = index >= MenPerfumeimgs.length - 2;
     const isFavorite = favorites.includes(MenPerfumeDetail.key);
+    const [isPressed,setIsPressed]=useState(false);
 
     const toggleHeartIcon = () => {
         if (isFavorite) {
@@ -42,7 +43,14 @@ const Men_PerfumeDetail = ({ MenPerfumeDetail, index }) => {
                     <Text style={styles.money}>{MenPerfumeDetail.money}</Text>
                 </VStack>
                 <View style={styles.iconContainer}>
-                    <Image source={selectclothesicon[0]} style={styles.icon} />
+                   <Pressable 
+                      onPressIn={() => setIsPressed(true)} 
+                      onPressOut={() => setIsPressed(false)}
+                      style={[styles.iconWrapper, isPressed && styles.iconPressed]}>
+                   <Image source={selectclothesicon[0]} style={styles.icon} />
+                   </Pressable>
+                    
+                    
                     <Pressable onPress={toggleHeartIcon}>
                         <Image
                             source={isFavorite ? img8 : img7}
@@ -69,8 +77,14 @@ const styles = StyleSheet.create({
     title: {
         fontFamily: "Roboto",
         fontSize: 12,
-        marginTop: 5,
+        marginTop: 20,
         marginBottom: 5,
+    },
+    iconWrapper: {
+        borderRadius: 12,
+      },
+    iconPressed: {
+        backgroundColor: 'gray',
     },
     money: {
         fontFamily: "Roboto",
