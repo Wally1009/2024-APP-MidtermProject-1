@@ -1,8 +1,9 @@
 import React,{useState} from 'react';
-import { StyleSheet, Image, Text, View } from 'react-native';
+import { StyleSheet, Image, Text, View,Alert } from 'react-native';
 import { Box, VStack, Pressable } from "@gluestack-ui/themed";
 import { useNavigation } from "@react-navigation/native";
 import { useFavorites } from '../Context/FavoriteContext';
+import { useCart } from '../Context/CartContext';
 
 import img0 from '../../src/Men_Perfume_img/image CKK Perfume.png';
 import img1 from '../../src/Men_Perfume_img/image HERO Perfume.png';
@@ -23,6 +24,7 @@ const Men_PerfumeDetail = ({ MenPerfumeDetail, index }) => {
     const isLastTwo = index >= MenPerfumeimgs.length - 2;
     const isFavorite = favorites.includes(MenPerfumeDetail.key);
     const [isPressed,setIsPressed]=useState(false);
+    const{addToCart}=useCart();
 
     const toggleHeartIcon = () => {
         if (isFavorite) {
@@ -31,11 +33,15 @@ const Men_PerfumeDetail = ({ MenPerfumeDetail, index }) => {
             addFavorite(MenPerfumeDetail.key);
         }
     };
+    const handleAddToCart=()=>{
+        addToCart({ title: MenPerfumeDetail.title, money: MenPerfumeDetail.money, key: MenPerfumeDetail.key, descriptions: MenPerfumeDetail.descriptions,image:MenPerfumeimgs[MenPerfumeDetail.key],type:'MenPerfume' });
+        Alert.alert('好薛',`${MenPerfumeDetail.title} 已成功添加到購物車`);
+      }
 
     return (
         <Box p={10} marginX={1} marginBottom={2} borderRadius={3} shadow={2} position="relative" style={styles.container}>
             <VStack bg="#fff">
-                <Pressable onPress={() => navigate('Detail', MenPerfumeDetail)} style={[styles.pressable, isLastTwo && styles.lastTwo]}>
+                <Pressable onPress={() => navigate('Men_PerfumeDetailScreen', MenPerfumeDetail)} style={[styles.pressable, isLastTwo && styles.lastTwo]}>
                     <Image source={MenPerfumeimgs[MenPerfumeDetail.key]} style={{ width: 140, height: 200 }} />
                 </Pressable>
                 <VStack paddingLeft={2}>
@@ -44,6 +50,7 @@ const Men_PerfumeDetail = ({ MenPerfumeDetail, index }) => {
                 </VStack>
                 <View style={styles.iconContainer}>
                    <Pressable 
+                      onPress={handleAddToCart}
                       onPressIn={() => setIsPressed(true)} 
                       onPressOut={() => setIsPressed(false)}
                       style={[styles.iconWrapper, isPressed && styles.iconPressed]}>
