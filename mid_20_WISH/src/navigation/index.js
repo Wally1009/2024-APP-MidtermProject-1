@@ -144,7 +144,7 @@ const MenuStack = ({ navigation }) => {
               }}
             />
             <Stack.Screen
-              name="Detail"
+              name="Men_PerfumeDetailScreen"
               component={Men_PerfumeDetailScreen}
               options={({ route }) => ({
                 title: route.params.title,
@@ -196,6 +196,18 @@ const Cartstack =({ navigation }) => {
                         </Pressable>
                     ),
                 }}
+            />
+            <Stack.Screen
+                name="Men_PerfumeDetailScreen"
+                component={Men_PerfumeDetailScreen}
+                options={({ route }) => ({
+                    title: route.params.title,
+                    headerTintColor: '#000',
+                    headerTitleStyle: {
+                        fontWeight: '400',
+                        fontSize: 20
+                    },
+                })}
             />
             <Stack.Screen
                 name="Heart"
