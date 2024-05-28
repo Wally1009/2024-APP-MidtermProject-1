@@ -119,16 +119,7 @@ const MenuStack = ({ navigation }) => {
                         backgroundColor: "#000000",
                         height: 60,
                     },
-                    headerRight: () => (
-                        <Pressable onPress={() => navigation.navigate('Search')}>
-                            <MaterialCommunityIcons
-                                name={'magnify'}
-                                size={24}
-                                style = {styles.icon} 
-                            />    
-                        </Pressable>
-                    ),
-                   
+                    
                 })}
             />
             <Stack.Screen
@@ -155,11 +146,7 @@ const MenuStack = ({ navigation }) => {
                 },
             })}
             />
-            <Stack.Screen
-                name="Search"
-                component={SearchScreen}
-                options={{title:'Search'}}
-            />
+        
         </Stack.Navigator>
     ); 
 
@@ -177,19 +164,10 @@ const Cartstack =({ navigation }) => {
                         backgroundColor: "#000000",
                         height: 60,
                     },
-                    headerLeft: () => (
+                    headerRight: () => (
                         <Pressable onPress={() => navigation.navigate('Heart')}>
                             <MaterialCommunityIcons
                                 name={'heart-outline'}
-                                size={24}
-                                style={styles.icon}
-                            />
-                        </Pressable>
-                    ),
-                    headerRight: () => (
-                        <Pressable onPress={() => navigation.navigate('Search')}>
-                            <MaterialCommunityIcons
-                                name={'magnify'}
                                 size={24}
                                 style={styles.icon}
                             />
@@ -218,7 +196,7 @@ const Cartstack =({ navigation }) => {
                         backgroundColor: "#000000",
                         height: 60,
                     },
-                    headerLeft: () => (
+                    headerRight: () => (
                         <Pressable onPress={() => navigation.navigate('Cart')}>
                             <MaterialCommunityIcons
                                 name={'cart-outline'}
@@ -227,22 +205,9 @@ const Cartstack =({ navigation }) => {
                             />
                         </Pressable>
                     ),
-                    headerRight: () => (
-                        <Pressable onPress={() => navigation.navigate('Search')}>
-                            <MaterialCommunityIcons
-                                name={'magnify'}
-                                size={24}
-                                style={styles.icon}
-                            />
-                        </Pressable>
-                    ),
                 }}
             />
-            <Stack.Screen
-                name="Search"
-                component={SearchScreen}
-                options={{title:'Search'}}
-            />
+            
         </Stack.Navigator>
     );
 }
@@ -259,21 +224,8 @@ const Accountstack = ({ navigation }) => {
                             backgroundColor: "#000000",
                             height: 60,
                         },
-                        headerRight: () => (
-                            <Pressable onPress={() => navigation.navigate('Search')}>
-                                <MaterialCommunityIcons
-                                    name={'magnify'}
-                                    size={24}
-                                    style = {styles.icon} 
-                                />    
-                            </Pressable>
-                        ),
+                        
                     }}
-            />
-            <Stack.Screen
-                name="Search"
-                component={SearchScreen}
-                options={{title:'Search'}}
             />
         </Stack.Navigator>
     ); 
