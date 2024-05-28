@@ -4,28 +4,37 @@ import { Box, Center, Text } from '@gluestack-ui/themed';
 import { useCart } from '../Context/CartContext';
 import { useNavigation, useIsFocused } from '@react-navigation/native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import HeartWhiteImg from '../../src/img/heart-plus-outline (1).png';
+import HeartBlackImg from '../../src/img/heart-plus-outline-black.png';
+import { useFavorites } from '../Context/FavoriteContext';
+
+
 
 const ShoppingCartScreen = () => {
     const { cartItems, addToCart, removeFromCart } = useCart();
     const navigation = useNavigation();
     const isFocused = useIsFocused();
+    const { favorites, addFavorite, removeFavorite } = useFavorites();
 
     useEffect(() => {
         // 重新渲染購物車畫面時的操作
         // 這裡可以添加任何你需要的邏輯，例如更新購物車內容或發送 API 請求等
-    }, [isFocused]); // 當 isFocused 變化時觸發 useEffect
+    }, [isFocused]);
 
     const handleIncreaseQuantity = (item) => {
-        addToCart({
-            ...item,
-            quantity: item.quantity + 1
-        });
+        addToCart(item);
     };
 
     const handleDecreaseQuantity = (item) => {
         removeFromCart(item);
     };
-
+    const toggleHeartIcon = (item) => {
+        if (favorites.includes(item.key)) {
+            removeFavorite(item.key);
+        } else {
+            addFavorite(item.key);
+        }
+    };
     const navigationToDetail = (item) => {
         if (item.type === 'MenPerfume') {
             navigation.navigate('Men_PerfumeDetailScreen', {
@@ -36,7 +45,7 @@ const ShoppingCartScreen = () => {
                 image: item.image,
             });
         }
-    }
+    };
 
     const renderItem = ({ item }) => (
         <View style={styles.itemContainer}>
@@ -46,6 +55,15 @@ const ShoppingCartScreen = () => {
             <View style={styles.infoContainer}>
                 <Text style={styles.title}>{item.title}</Text>
                 <Text style={styles.money}>{item.money}</Text>
+                <View style={styles.infoContainer}>
+                    <Pressable onPress={()=>toggleHeartIcon(item)}>
+                        <Image
+                            source={favorites.includes(item.key)?HeartBlackImg:HeartWhiteImg}
+                            style={styles.icon}
+                        />
+                    </Pressable>
+                </View>
+                
                 <View style={styles.quantityContainer}>
                     <Pressable onPress={() => handleDecreaseQuantity(item)}>
                         <MaterialCommunityIcons name="minus" size={24} style={styles.quantityButton} />
@@ -60,7 +78,7 @@ const ShoppingCartScreen = () => {
     );
 
     return (
-        <Box>
+        <Box style={styles.container}>
             <Text style={styles.cart}>購物車</Text>
             {cartItems.length === 0 ? (
                 <Center style={{ top: 170 }}>
@@ -85,6 +103,19 @@ const ShoppingCartScreen = () => {
 };
 
 const styles = StyleSheet.create({
+    container:{
+        flex:1,
+    },
+    icon:{
+        width: 15,
+        height: 14,
+        marginTop:-10,
+        marginLeft:0,
+        marginHorizontal: 5,
+    },
+    secondIcon: {
+        marginLeft: 0,
+    },
     cart: {
         fontFamily: "Roboto",
         fontSize: 32,
@@ -117,25 +148,37 @@ const styles = StyleSheet.create({
     image: {
         width: 140,
         height: 200,
-        marginRight: 10,
+        marginRight: 18,
+        marginTop:30,
+        marginLeft:21
+    },
+    infoContainer: {
+        flex: 1,
+        marginBottom:12,
+        marginTop:33,
     },
     title: {
         fontFamily: "Roboto",
-        fontSize: 16,
+        fontSize: 13,
         fontWeight: 'bold',
     },
     money: {
         fontFamily: "Roboto",
-        fontSize: 14,
+        fontSize: 12,
         color: '#555',
+        marginTop:13
     },
     quantityContainer: {
+        position:'absolute',
+        right:10,
+        top:170,
         flexDirection: 'row',
         alignItems: 'center',
     },
     quantityButton: {
         color: '#000',
         paddingHorizontal: 10,
+        fontSize:25
     },
 });
 
