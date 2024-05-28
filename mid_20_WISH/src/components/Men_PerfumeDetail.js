@@ -4,12 +4,12 @@ import { Box, VStack, Pressable } from "@gluestack-ui/themed";
 import { useNavigation } from "@react-navigation/native";
 import { useFavorites } from '../Context/FavoriteContext';
 
-import img0 from '../../src/Men_Perfume_img/image CKK Perfume.png';
-import img1 from '../../src/Men_Perfume_img/image HERO Perfume.png';
-import img2 from '../../src/Men_Perfume_img/image Dior曠野之心.png';
-import img3 from '../../src/Men_Perfume_img/image Fire Perfume.png';
-import img4 from '../../src/Men_Perfume_img/image Fahrenheit.png';
-import img5 from '../../src/Men_Perfume_img/image Homme.png';
+import img0 from '../../src/img/Men_Perfume_img/image CKK Perfume.png';
+import img1 from '../../src/img/Men_Perfume_img/image HERO Perfume.png';
+import img2 from '../../src/img/Men_Perfume_img/image Dior曠野之心.png';
+import img3 from '../../src/img/Men_Perfume_img/image Fire Perfume.png';
+import img4 from '../../src/img/Men_Perfume_img/image Fahrenheit.png';
+import img5 from '../../src/img/Men_Perfume_img/image Homme.png';
 import img6 from '../../src/img/cart-plus (1).png';
 import img7 from '../../src/img/heart-plus-outline (1).png';
 import img8 from '../../src/img/heart-plus-outline-black.png';
