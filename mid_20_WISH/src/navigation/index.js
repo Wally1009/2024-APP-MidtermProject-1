@@ -17,6 +17,15 @@ import HeartScreen from "../screens/HeartScreen";
 import Men_PerfumeDetailScreen from "../screens/Men_PerfumeDetailScreen";
 import Men_PerfumeScreen from "../screens/Men_PerfumeScreen";
 import MenPerfumeData from "../json/Men_Perfume.json";
+import Men_JacketDetailScreen from "../screens/Men_JacketDetailScreen";
+import Men_JacketScreen from "../screens/Men_JacketScreen";
+import MenJacketData from "../json/Men_Jacket.json";
+import Men_PantsDetailScreen from "../screens/Men_PantsDetailScreen";
+import Men_PantsScreen from "../screens/Men_PantsScreen";
+import MenPantsData from "../json/Men_Pants.json";
+import Men_TshirtDetailScreen from "../screens/Men_TshirtDetailScreen";
+import Men_TshirtScreen from "../screens/Men_TshirtScreen";
+import MenTshirtData from "../json/Men_Tshirt.json";
 
 import { Colors } from "react-native/Libraries/NewAppScreen";
 
@@ -123,6 +132,78 @@ const MenuStack = ({ navigation }) => {
                 })}
             />
             <Stack.Screen
+              name="Men_TshirtScreen"
+              component={Men_TshirtScreen}
+              options={{
+                title: MenTshirtData.title,
+                headerTitleStyle: {
+                    fontWeight: '400',
+                    fontSize: 20,
+                },
+              
+              }}
+            />
+            <Stack.Screen
+              name="Men_TshirtDetailScreen"
+              component={Men_TshirtDetailScreen}
+              options={({ route }) => ({
+                title: route.params.title,
+                headerTintColor: '#000',
+                headerTitleStyle: {
+                    fontWeight: '400',
+                    fontSize: 20
+                },
+            })}
+            />
+            <Stack.Screen
+              name="Men_JacketScreen"
+              component={Men_JacketScreen}
+              options={{
+                title: MenJacketData.title,
+                headerTitleStyle: {
+                    fontWeight: '400',
+                    fontSize: 20,
+                },
+              
+              }}
+            />
+            <Stack.Screen
+              name="Men_JacketDetailScreen"
+              component={Men_JacketDetailScreen}
+              options={({ route }) => ({
+                title: route.params.title,
+                headerTintColor: '#000',
+                headerTitleStyle: {
+                    fontWeight: '400',
+                    fontSize: 20
+                },
+            })}
+            />
+            <Stack.Screen
+              name="Men_PantsScreen"
+              component={Men_PantsScreen}
+              options={{
+                title: MenPantsData.title,
+                headerTitleStyle: {
+                    fontWeight: '400',
+                    fontSize: 20,
+                },
+              
+              }}
+            />
+            <Stack.Screen
+              name="Men_PantsDetailScreen"
+              component={Men_PantsDetailScreen}
+              options={({ route }) => ({
+                title: route.params.title,
+                headerTintColor: '#000',
+                headerTitleStyle: {
+                    fontWeight: '400',
+                    fontSize: 20
+                },
+            })}
+            />
+            <Stack.Screen
               name="Men_PerfumeScreen"
               component={Men_PerfumeScreen}
               options={{
@@ -174,6 +255,42 @@ const Cartstack =({ navigation }) => {
                         </Pressable>
                     ),
                 }}
+            />
+             <Stack.Screen
+                name="Men_TshirtDetailScreen"
+                component={Men_TshirtDetailScreen}
+                options={({ route }) => ({
+                    title: route.params.title,
+                    headerTintColor: '#000',
+                    headerTitleStyle: {
+                        fontWeight: '400',
+                        fontSize: 20
+                    },
+                })}
+            />
+            <Stack.Screen
+                name="Men_JacketDetailScreen"
+                component={Men_JacketDetailScreen}
+                options={({ route }) => ({
+                    title: route.params.title,
+                    headerTintColor: '#000',
+                    headerTitleStyle: {
+                        fontWeight: '400',
+                        fontSize: 20
+                    },
+                })}
+            />
+            <Stack.Screen
+                name="Men_PantsDetailScreen"
+                component={Men_PantsDetailScreen}
+                options={({ route }) => ({
+                    title: route.params.title,
+                    headerTintColor: '#000',
+                    headerTitleStyle: {
+                        fontWeight: '400',
+                        fontSize: 20
+                    },
+                })}
             />
             <Stack.Screen
                 name="Men_PerfumeDetailScreen"

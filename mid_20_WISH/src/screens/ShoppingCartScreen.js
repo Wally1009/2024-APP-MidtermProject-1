@@ -45,6 +45,33 @@ const ShoppingCartScreen = () => {
                 image: item.image,
             });
         }
+        else if(item.type === 'MenJacket') {
+            navigation.navigate('Men_JacketDetailScreen', {
+                title: item.title,
+                money: item.money,
+                key: item.key,
+                descriptions: item.descriptions,
+                image: item.image,
+            });
+        }
+        else if(item.type === 'MenPants') {
+            navigation.navigate('Men_PantsDetailScreen', {
+                title: item.title,
+                money: item.money,
+                key: item.key,
+                descriptions: item.descriptions,
+                image: item.image,
+            });
+        }
+        else if(item.type === 'MenTshirt') {
+            navigation.navigate('Men_TshirtDetailScreen', {
+                title: item.title,
+                money: item.money,
+                key: item.key,
+                descriptions: item.descriptions,
+                image: item.image,
+            });
+        }
     };
 
     const renderItem = ({ item }) => (

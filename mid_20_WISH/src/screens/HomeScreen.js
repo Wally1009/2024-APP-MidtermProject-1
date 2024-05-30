@@ -19,7 +19,7 @@ const HomeScreen = () => {
             <ImageBackground style={styles.image} source={require('../img/Men_Jacket_img/image 29.png')}>
                     <Text style={styles.text}>WISH</Text>
             </ImageBackground>
-            <ImageBackground style={styles.image} source={require('../img/Men_T-shirt_img/image 38.png')}>
+            <ImageBackground style={styles.image} source={require('../img/Men_Tshirt_img/image 38.png')}>
                     <Text style={styles.text}>WISH</Text>
             </ImageBackground>
             <ImageBackground style={styles.image} source={require('../img/Women_Jacket_img/image 31.png')}>
