@@ -5,12 +5,12 @@ import { useNavigation } from '@react-navigation/native';
 import { useFavorites } from '../Context/FavoriteContext';
 import { useCart } from '../Context/CartContext';
 
-import img0 from '../../src/img/Men_Jacket_img/image 3.png';
-import img1 from '../../src/img/Men_Jacket_img/image 12.png';
+import img0 from '../../src/img/Men_Jacket_img/image 12.png';
+import img1 from '../../src/img/Men_Jacket_img/image 3.png';
 import img2 from '../../src/img/Men_Jacket_img/image 14.png';
-import img3 from '../../src/img/Men_Jacket_img/image 15.png';
+import img3 from '../../src/img/Men_Jacket_img/image 72.png';
 import img4 from '../../src/img/Men_Jacket_img/image 29.png';
-import img5 from '../../src/img/Men_Jacket_img/image 72.png';
+import img5 from '../../src/img/Men_Jacket_img/image 15.png';
 import img6 from '../../src/img/cart-plus.png';
 import img7 from '../../src/img/heart-plus-outline.png';
 import img8 from '../../src/img/heart-plus-outline-fullwhite.png';

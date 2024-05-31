@@ -5,12 +5,12 @@ import { useNavigation } from "@react-navigation/native";
 import { useFavorites } from '../Context/FavoriteContext';
 import { useCart } from '../Context/CartContext';
 
-import img0 from '../../src/img/Men_Pants_img/image 36 (2).png';
-import img1 from '../../src/img/Men_Pants_img/image 46 (1).png';
-import img2 from '../../src/img/Men_Pants_img/image 47.png';
-import img3 from '../../src/img/Men_Pants_img/image 48.png';
-import img4 from '../../src/img/Men_Pants_img/image 49.png';
-import img5 from '../../src/img/Men_Pants_img/image 53.png';
+import img0 from '../../src/img/Men_Pants_img/image 49.png';
+import img1 from '../../src/img/Men_Pants_img/image 36 (2).png';
+import img2 from '../../src/img/Men_Pants_img/image 48.png';
+import img3 from '../../src/img/Men_Pants_img/image 53.png';
+import img4 from '../../src/img/Men_Pants_img/image 46 (1).png';
+import img5 from '../../src/img/Men_Pants_img/image 47.png';
 import img6 from '../../src/img/cart-plus (1).png';
 import img7 from '../../src/img/heart-plus-outline (1).png';
 import img8 from '../../src/img/heart-plus-outline-black.png';

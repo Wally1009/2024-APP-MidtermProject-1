@@ -5,12 +5,12 @@ import { useNavigation } from '@react-navigation/native';
 import { useFavorites } from '../../Context/FavoriteContext';
 import { useCart } from '../../Context/CartContext';
 
-import img0 from '../../img/Barbie_img/image 17.png';
-import img1 from '../../img/Barbie_img//image 18.png';
-import img2 from '../../img/Barbie_img/image 19.png';
-import img3 from '../../img/Barbie_img/image 23.png';
-import img4 from '../../img/Barbie_img/image 24.png';
-import img5 from '../../img/Barbie_img/image 25.png';
+import img0 from '../../img/Barbie_img/image 23.png';
+import img1 from '../../img/Barbie_img//image 25.png';
+import img2 from '../../img/Barbie_img/image 18.png';
+import img3 from '../../img/Barbie_img/image 24.png';
+import img4 from '../../img/Barbie_img/image 19.png';
+import img5 from '../../img/Barbie_img/image 17.png';
 import img6 from '../../img/cart-plus-pink.png';
 import img7 from '../../img/heart-plus-outline-pink.png';
 import img8 from '../../img/heart-plus-pink.png';

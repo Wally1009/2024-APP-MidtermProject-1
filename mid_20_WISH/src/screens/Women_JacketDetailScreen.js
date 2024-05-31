@@ -5,11 +5,11 @@ import { useNavigation } from '@react-navigation/native';
 import { useFavorites } from '../Context/FavoriteContext';
 import { useCart } from '../Context/CartContext';
 
-import img0 from '../../src/img/Women_Jacket_img/image 10.png';
-import img1 from '../../src/img/Women_Jacket_img/image 16.png';
-import img2 from '../../src/img/Women_Jacket_img/image 28.png';
-import img3 from '../../src/img/Women_Jacket_img/image 30.png';
-import img4 from '../../src/img/Women_Jacket_img/image 31.png';
+import img0 from '../../src/img/Women_Jacket_img/image 31.png';
+import img1 from '../../src/img/Women_Jacket_img/image 10.png';
+import img2 from '../../src/img/Women_Jacket_img/image 16.png';
+import img3 from '../../src/img/Women_Jacket_img/image 28.png';
+import img4 from '../../src/img/Women_Jacket_img/image 30.png';
 import img5 from '../../src/img/Women_Jacket_img/image 32.png';
 import img6 from '../../src/img/cart-plus.png';
 import img7 from '../../src/img/heart-plus-outline.png';
