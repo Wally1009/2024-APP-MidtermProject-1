@@ -105,6 +105,14 @@ const ShoppingCartScreen = () => {
                 descriptions: item.descriptions,
                 image: item.image,
             });
+        }else if(item.type === 'Fashion') {
+            navigation.navigate('FashionDetailScreen', {
+                title: item.title,
+                money: item.money,
+                key: item.key,
+                descriptions: item.descriptions,
+                image: item.image,
+            });
         }
     };
 

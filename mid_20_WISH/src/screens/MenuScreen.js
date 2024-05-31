@@ -10,6 +10,7 @@ import Women_JacketScreen from './Women_JacketScreen';
 import Women_PantsScreen from './Women_PantsScreen';
 import Women_TshirtScreen from './Women_TshirtScreen';
 import Women_PerfumeScreen from './Women_PerfumeScreen';
+import FashionScreen from './Fashion/FashionScreen';
 import SegmentedControlTab from 'react-native-segmented-control-tab';
 
 
@@ -35,7 +36,7 @@ const MenuScreen = () => {
                     </Center>
                 );
             case 2:
-                return <Text>Fashion Content</Text>; // 添加 Fashion 内容
+                return <FashionScreen/>; // 添加 Fashion 内容
             case 3:
                 return <Text>Rupert Content</Text>; // 添加 Rupert 内容
             default:

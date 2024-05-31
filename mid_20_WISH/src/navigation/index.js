@@ -1,11 +1,10 @@
-import React, { useState } from "react";
-import { NavigationContainer,useIsFocused } from "@react-navigation/native";
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { Box, Text, KeyboardAvoidingView, Pressable } from "@gluestack-ui/themed";
-
+import { Box, KeyboardAvoidingView, Pressable } from "@gluestack-ui/themed";
 import { StyleSheet, Platform } from "react-native";
 
 import HomeScreen from "../screens/HomeScreen";
@@ -38,8 +37,9 @@ import MenPantsData from "../json/Men_Pants.json";
 import Men_TshirtDetailScreen from "../screens/Men_TshirtDetailScreen";
 import Men_TshirtScreen from "../screens/Men_TshirtScreen";
 import MenTshirtData from "../json/Men_Tshirt.json";
-
-import { Colors } from "react-native/Libraries/NewAppScreen";
+import FashionDetailScreen from "../screens/Fashion/FashionDetailScreen";
+import FashionScreen from "../screens/Fashion/FashionScreen";
+import FashionData from "../json/Fashion.json";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -52,8 +52,7 @@ const Navigation = () => {
             flex={1}
         >
             <NavigationContainer>
-            <MyTab/>
-                
+                <MyTab/>
             </NavigationContainer>
         </KeyboardAvoidingView>
     )
@@ -134,14 +133,36 @@ const MenuStack = ({ navigation }) => {
             <Stack.Screen 
                 name="Menu"
                 component={MenuScreen}
-                options={({ route }) => ({
+                options={{
                     title:"",
                     headerStyle:{
                         backgroundColor: "#000000",
                         height: 60,
                     },
-                    
-                })}
+                }}
+            />
+            <Stack.Screen
+              name="FashionScreen"
+              component={FashionScreen}
+              options={{
+                title: FashionData.title,
+                headerTitleStyle: {
+                    fontWeight: '400',
+                    fontSize: 20,
+                },
+              }}
+            />
+            <Stack.Screen
+              name="FashionDetailScreen"
+              component={FashionDetailScreen}
+              options={({ route }) => ({
+                title: route.params.title,
+                headerTintColor: '#000',
+                headerTitleStyle: {
+                    fontWeight: '400',
+                    fontSize: 20
+                },
+            })}
             />
             <Stack.Screen
               name="Women_JacketScreen"
@@ -152,7 +173,6 @@ const MenuStack = ({ navigation }) => {
                     fontWeight: '400',
                     fontSize: 20,
                 },
-              
               }}
             />
             <Stack.Screen
@@ -176,7 +196,6 @@ const MenuStack = ({ navigation }) => {
                     fontWeight: '400',
                     fontSize: 20,
                 },
-              
               }}
             />
             <Stack.Screen
@@ -200,7 +219,6 @@ const MenuStack = ({ navigation }) => {
                     fontWeight: '400',
                     fontSize: 20,
                 },
-              
               }}
             />
             <Stack.Screen
@@ -224,7 +242,6 @@ const MenuStack = ({ navigation }) => {
                     fontWeight: '400',
                     fontSize: 20,
                 },
-              
               }}
             />
             <Stack.Screen
@@ -248,7 +265,6 @@ const MenuStack = ({ navigation }) => {
                     fontWeight: '400',
                     fontSize: 20,
                 },
-              
               }}
             />
             <Stack.Screen
@@ -272,7 +288,6 @@ const MenuStack = ({ navigation }) => {
                     fontWeight: '400',
                     fontSize: 20,
                 },
-              
               }}
             />
             <Stack.Screen
@@ -296,7 +311,6 @@ const MenuStack = ({ navigation }) => {
                     fontWeight: '400',
                     fontSize: 20,
                 },
-              
               }}
             />
             <Stack.Screen
@@ -320,7 +334,6 @@ const MenuStack = ({ navigation }) => {
                     fontWeight: '400',
                     fontSize: 20,
                 },
-              
               }}
             />
             <Stack.Screen
@@ -335,10 +348,8 @@ const MenuStack = ({ navigation }) => {
                 },
             })}
             />
-        
         </Stack.Navigator>
     ); 
-
 }
 
 const Cartstack =({ navigation }) => {
@@ -375,18 +386,19 @@ const Cartstack =({ navigation }) => {
                         fontSize: 20
                     },
                 })}
-            /><Stack.Screen
-            name="Women_PerfumeDetailScreen"
-            component={Women_PerfumeDetailScreen}
-            options={({ route }) => ({
-                title: route.params.title,
-                headerTintColor: '#000',
-                headerTitleStyle: {
-                    fontWeight: '400',
-                    fontSize: 20
-                },
-            })}
-        />
+            />
+            <Stack.Screen
+                name="Women_PerfumeDetailScreen"
+                component={Women_PerfumeDetailScreen}
+                options={({ route }) => ({
+                    title: route.params.title,
+                    headerTintColor: '#000',
+                    headerTitleStyle: {
+                        fontWeight: '400',
+                        fontSize: 20
+                    },
+                })}
+            />
             <Stack.Screen
                 name="Women_TshirtDetailScreen"
                 component={Women_TshirtDetailScreen}
@@ -411,7 +423,7 @@ const Cartstack =({ navigation }) => {
                     },
                 })}
             />
-             <Stack.Screen
+            <Stack.Screen
                 name="Men_TshirtDetailScreen"
                 component={Men_TshirtDetailScreen}
                 options={({ route }) => ({
@@ -460,6 +472,18 @@ const Cartstack =({ navigation }) => {
                 })}
             />
             <Stack.Screen
+                name="FashionDetailScreen"
+                component={FashionDetailScreen}
+                options={({ route }) => ({
+                    title: route.params.title,
+                    headerTintColor: '#000',
+                    headerTitleStyle: {
+                        fontWeight: '400',
+                        fontSize: 20
+                    },
+                })}
+            />
+            <Stack.Screen
                 name="Heart"
                 component={HeartScreen}
                 options={{
@@ -479,7 +503,6 @@ const Cartstack =({ navigation }) => {
                     ),
                 }}
             />
-            
         </Stack.Navigator>
     );
 }
@@ -496,7 +519,6 @@ const Accountstack = ({ navigation }) => {
                             backgroundColor: "#000000",
                             height: 60,
                         },
-                        
                     }}
             />
         </Stack.Navigator>
