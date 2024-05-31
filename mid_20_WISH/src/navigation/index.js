@@ -1,3 +1,4 @@
+
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -255,8 +256,7 @@ const MenuStack = ({ navigation }) => {
                     fontSize: 20
                 },
             })}
-            />
-            <Stack.Screen
+            /><Stack.Screen
               name="Men_TshirtScreen"
               component={Men_TshirtScreen}
               options={{

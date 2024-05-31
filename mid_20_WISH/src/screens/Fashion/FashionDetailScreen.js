@@ -15,7 +15,7 @@ import img6 from '../../img/cart-plus-pink.png';
 import img7 from '../../img/heart-plus-outline-pink.png';
 import img8 from '../../img/heart-plus-pink.png';
 
-const Fashionimgs = [img0, img1, img2, img3, img4, img5];
+const Fashionimgs = [img0, img1, img2, img3, img4, img5,img0, img1, img2, img3, img4, img5,img0, img1, img2, img3, img4, img5,img0, img1, img2, img3, img4, img5,img0, img1, img2, img3, img4, img5,img0, img1, img2, img3, img4, img5,img0, img1, img2, img3, img4, img5,img0, img1, img2, img3, img4, img5,img0, img1, img2, img3, img4, img5];
 const plusclothesicon = [img6, img7];
 
 const FashionDetailScreen = ({ route }) => {

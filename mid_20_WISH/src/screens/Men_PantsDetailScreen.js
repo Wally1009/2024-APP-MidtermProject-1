@@ -15,7 +15,7 @@ import img6 from '../../src/img/cart-plus.png';
 import img7 from '../../src/img/heart-plus-outline.png';
 import img8 from '../../src/img/heart-plus-outline-fullwhite.png';
 
-const MenPantsimgs = [img0, img1, img2, img3, img4, img5];
+const MenPantsimgs = [img0, img1, img2, img3, img4, img5,img0, img1, img2, img3, img4, img5,img0, img1, img2, img3, img4, img5,img0, img1, img2, img3, img4, img5,img0, img1, img2, img3, img4, img5,img0, img1, img2, img3, img4, img5,img0, img1, img2, img3, img4, img5];
 const plusclothesicon = [img6, img7];
 
 const Men_PantsDetailScreen = ({ route }) => {

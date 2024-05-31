@@ -5,37 +5,37 @@
        {
          "title": "高領短袖",
          "money": "NT$600",
-         "key":0,
+         "key":6,
          "descriptions": "黑色高領短袖，十分適合做內搭，高領設計完美襯托韓系搭配，讓你在夏天也能當韓系小資女"
        },
        {
          "title": "Balenciagaa短袖",
          "money": "NT$10000",
-         "key":1,
+         "key":7,
          "descriptions": "普通的黑色短袖，加上一個Balenciagaa的logo價值直接Up Up，奢華感都出來了"
        },
        {
          "title": "下擺很長的短袖",
          "money": "NT$700",
-         "key":2,
+         "key":8,
          "descriptions": "下擺及膝，棉質短袖，在家穿輕鬆無負擔"
        },
        {
          "title": "兩個女人的短袖",
          "money": "NT$800",
-         "key":3,
+         "key":9,
          "descriptions": "棉質短袖，衣服上印有兩個看起來很有錢的女人，讓你看起來也很有錢，Rupert不推薦"
       },
       {
          "title": "OF-White塗鴉",
          "money": "NT$3000",
-         "key":4,
+         "key":10,
          "descriptions": "潮牌塗鴉設計，給你滿滿的美式街頭感"
       },
       {
          "title": "Christian Diorr",
          "money": "NT$5000",
-         "key":5,
+         "key":11,
          "descriptions": "名牌上衣，衣服中間的星星加上整體簡約風格，有種西部牛仔的荒野感"
       }
     ]}

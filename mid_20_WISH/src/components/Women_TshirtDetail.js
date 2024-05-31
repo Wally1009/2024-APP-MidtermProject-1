@@ -15,7 +15,7 @@ import img6 from '../../src/img/cart-plus (1).png';
 import img7 from '../../src/img/heart-plus-outline (1).png';
 import img8 from '../../src/img/heart-plus-outline-black.png';
 
-const WomenTshirtimgs = [img0, img1, img2, img3, img4, img5];
+const WomenTshirtimgs = [img0, img1, img2, img3, img4, img5,img0, img1, img2, img3, img4, img5];
 const selectclothesicon = [img6, img7];
 
 const Women_TshirtDetail = ({ WomenTshirtDetail, index }) => {
