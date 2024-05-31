@@ -162,7 +162,18 @@ const MenuStack = ({ navigation }) => {
                 headerTitleStyle: {
                     fontWeight: '400',
                     fontSize: 20
+                },headerStyle: {
+                    backgroundColor: 'black',
                 },
+                headerLeft: () => (
+                    <Pressable onPress={() => navigation.navigate('Menu')}>
+                        <MaterialCommunityIcons
+                            name={'chevron-left'}
+                            size={24}
+                            style={{ marginLeft: 10, color: 'white' }}
+                        />
+                    </Pressable>
+                ),
             })}
             />
             <Stack.Screen
@@ -173,7 +184,18 @@ const MenuStack = ({ navigation }) => {
                 headerTitleStyle: {
                     fontWeight: '400',
                     fontSize: 20,
+                },headerStyle: {
+                    backgroundColor: 'black',
                 },
+                headerLeft: () => (
+                    <Pressable onPress={() => navigation.navigate('Menu')}>
+                        <MaterialCommunityIcons
+                            name={'chevron-left'}
+                            size={24}
+                            style={{ marginLeft: 10, color: 'white' }}
+                        />
+                    </Pressable>
+                ),
               }}
             />
             <Stack.Screen
@@ -185,7 +207,18 @@ const MenuStack = ({ navigation }) => {
                 headerTitleStyle: {
                     fontWeight: '400',
                     fontSize: 20
+                },headerStyle: {
+                    backgroundColor: 'black',
                 },
+                headerLeft: () => (
+                    <Pressable onPress={() => navigation.navigate('Women_JacketScreen')}>
+                        <MaterialCommunityIcons
+                            name={'chevron-left'}
+                            size={24}
+                            style={{ marginLeft: 10, color: 'white' }}
+                        />
+                    </Pressable>
+                ),
             })}
             />
             <Stack.Screen
@@ -196,7 +229,18 @@ const MenuStack = ({ navigation }) => {
                 headerTitleStyle: {
                     fontWeight: '400',
                     fontSize: 20,
+                },headerStyle: {
+                    backgroundColor: 'black',
                 },
+                headerLeft: () => (
+                    <Pressable onPress={() => navigation.navigate('Menu')}>
+                        <MaterialCommunityIcons
+                            name={'chevron-left'}
+                            size={24}
+                            style={{ marginLeft: 10, color: 'white' }}
+                        />
+                    </Pressable>
+                ),
               }}
             />
             <Stack.Screen
@@ -208,7 +252,18 @@ const MenuStack = ({ navigation }) => {
                 headerTitleStyle: {
                     fontWeight: '400',
                     fontSize: 20
+                },headerStyle: {
+                    backgroundColor: 'black',
                 },
+                headerLeft: () => (
+                    <Pressable onPress={() => navigation.navigate('Women_PerfumeScreen')}>
+                        <MaterialCommunityIcons
+                            name={'chevron-left'}
+                            size={24}
+                            style={{ marginLeft: 10, color: 'white' }}
+                        />
+                    </Pressable>
+                ),
             })}
             />
             <Stack.Screen
@@ -219,7 +274,18 @@ const MenuStack = ({ navigation }) => {
                 headerTitleStyle: {
                     fontWeight: '400',
                     fontSize: 20,
+                },headerStyle: {
+                    backgroundColor: 'black',
                 },
+                headerLeft: () => (
+                    <Pressable onPress={() => navigation.navigate('Menu')}>
+                        <MaterialCommunityIcons
+                            name={'chevron-left'}
+                            size={24}
+                            style={{ marginLeft: 10, color: 'white' }}
+                        />
+                    </Pressable>
+                ),
               }}
             />
             <Stack.Screen
@@ -231,7 +297,18 @@ const MenuStack = ({ navigation }) => {
                 headerTitleStyle: {
                     fontWeight: '400',
                     fontSize: 20
+                },headerStyle: {
+                    backgroundColor: 'black',
                 },
+                headerLeft: () => (
+                    <Pressable onPress={() => navigation.navigate('Women_TshirtScreen')}>
+                        <MaterialCommunityIcons
+                            name={'chevron-left'}
+                            size={24}
+                            style={{ marginLeft: 10, color: 'white' }}
+                        />
+                    </Pressable>
+                ),
             })}
             />
             <Stack.Screen
@@ -242,7 +319,18 @@ const MenuStack = ({ navigation }) => {
                 headerTitleStyle: {
                     fontWeight: '400',
                     fontSize: 20,
+                },headerStyle: {
+                    backgroundColor: 'black',
                 },
+                headerLeft: () => (
+                    <Pressable onPress={() => navigation.navigate('Menu')}>
+                        <MaterialCommunityIcons
+                            name={'chevron-left'}
+                            size={24}
+                            style={{ marginLeft: 10, color: 'white' }}
+                        />
+                    </Pressable>
+                ),
               }}
             />
             <Stack.Screen
@@ -254,7 +342,18 @@ const MenuStack = ({ navigation }) => {
                 headerTitleStyle: {
                     fontWeight: '400',
                     fontSize: 20
+                },headerStyle: {
+                    backgroundColor: 'black',
                 },
+                headerLeft: () => (
+                    <Pressable onPress={() => navigation.navigate('Women_PantsScreen')}>
+                        <MaterialCommunityIcons
+                            name={'chevron-left'}
+                            size={24}
+                            style={{ marginLeft: 10, color: 'white' }}
+                        />
+                    </Pressable>
+                ),
             })}
             /><Stack.Screen
               name="Men_TshirtScreen"
@@ -264,7 +363,18 @@ const MenuStack = ({ navigation }) => {
                 headerTitleStyle: {
                     fontWeight: '400',
                     fontSize: 20,
+                },headerStyle: {
+                    backgroundColor: 'black',
                 },
+                headerLeft: () => (
+                    <Pressable onPress={() => navigation.navigate('Menu')}>
+                        <MaterialCommunityIcons
+                            name={'chevron-left'}
+                            size={24}
+                            style={{ marginLeft: 10, color: 'white' }}
+                        />
+                    </Pressable>
+                ),
               }}
             />
             <Stack.Screen
@@ -276,7 +386,18 @@ const MenuStack = ({ navigation }) => {
                 headerTitleStyle: {
                     fontWeight: '400',
                     fontSize: 20
+                },headerStyle: {
+                    backgroundColor: 'black',
                 },
+                headerLeft: () => (
+                    <Pressable onPress={() => navigation.navigate('Men_TshirtScreen')}>
+                        <MaterialCommunityIcons
+                            name={'chevron-left'}
+                            size={24}
+                            style={{ marginLeft: 10, color: 'white' }}
+                        />
+                    </Pressable>
+                ),
             })}
             />
             <Stack.Screen
@@ -287,7 +408,18 @@ const MenuStack = ({ navigation }) => {
                 headerTitleStyle: {
                     fontWeight: '400',
                     fontSize: 20,
+                },headerStyle: {
+                    backgroundColor: 'black',
                 },
+                headerLeft: () => (
+                    <Pressable onPress={() => navigation.navigate('Menu')}>
+                        <MaterialCommunityIcons
+                            name={'chevron-left'}
+                            size={24}
+                            style={{ marginLeft: 10, color: 'white' }}
+                        />
+                    </Pressable>
+                ),
               }}
             />
             <Stack.Screen
@@ -299,7 +431,18 @@ const MenuStack = ({ navigation }) => {
                 headerTitleStyle: {
                     fontWeight: '400',
                     fontSize: 20
+                },headerStyle: {
+                    backgroundColor: 'black',
                 },
+                headerLeft: () => (
+                    <Pressable onPress={() => navigation.navigate('Men_JacketScreen')}>
+                        <MaterialCommunityIcons
+                            name={'chevron-left'}
+                            size={24}
+                            style={{ marginLeft: 10, color: 'white' }}
+                        />
+                    </Pressable>
+                ),
             })}
             />
             <Stack.Screen
@@ -310,7 +453,18 @@ const MenuStack = ({ navigation }) => {
                 headerTitleStyle: {
                     fontWeight: '400',
                     fontSize: 20,
+                },headerStyle: {
+                    backgroundColor: 'black',
                 },
+                headerLeft: () => (
+                    <Pressable onPress={() => navigation.navigate('Menu')}>
+                        <MaterialCommunityIcons
+                            name={'chevron-left'}
+                            size={24}
+                            style={{ marginLeft: 10, color: 'white' }}
+                        />
+                    </Pressable>
+                ),
               }}
             />
             <Stack.Screen
@@ -322,7 +476,18 @@ const MenuStack = ({ navigation }) => {
                 headerTitleStyle: {
                     fontWeight: '400',
                     fontSize: 20
+                },headerStyle: {
+                    backgroundColor: 'black',
                 },
+                headerLeft: () => (
+                    <Pressable onPress={() => navigation.navigate('Men_PantsScreen')}>
+                        <MaterialCommunityIcons
+                            name={'chevron-left'}
+                            size={24}
+                            style={{ marginLeft: 10, color: 'white' }}
+                        />
+                    </Pressable>
+                ),
             })}
             />
             <Stack.Screen
@@ -333,7 +498,18 @@ const MenuStack = ({ navigation }) => {
                 headerTitleStyle: {
                     fontWeight: '400',
                     fontSize: 20,
+                },headerStyle: {
+                    backgroundColor: 'black',
                 },
+                headerLeft: () => (
+                    <Pressable onPress={() => navigation.navigate('Menu')}>
+                        <MaterialCommunityIcons
+                            name={'chevron-left'}
+                            size={24}
+                            style={{ marginLeft: 10, color: 'white' }}
+                        />
+                    </Pressable>
+                ),
               }}
             />
             <Stack.Screen
@@ -345,7 +521,18 @@ const MenuStack = ({ navigation }) => {
                 headerTitleStyle: {
                     fontWeight: '400',
                     fontSize: 20
+                },headerStyle: {
+                    backgroundColor: 'black',
                 },
+                headerLeft: () => (
+                    <Pressable onPress={() => navigation.navigate('Men_PerfumeScreen')}>
+                        <MaterialCommunityIcons
+                            name={'chevron-left'}
+                            size={24}
+                            style={{ marginLeft: 10, color: 'white' }}
+                        />
+                    </Pressable>
+                ),
             })}
             />
         </Stack.Navigator>
