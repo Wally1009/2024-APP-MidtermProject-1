@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { SectionList, Text, StyleSheet,FlatList } from "react-native";
-import Women_JacketDetail from "../components/Women_JacketDetail";
+import Women_TshirtDetail from "../components/Women_TshirtDetail";
 
-const Women_JacketList = ({ WomenJacketList }) => {
+const Women_TshirtList = ({ WomenTshirtList }) => {
     // 定义一个状态用于存储收藏夹中的商品
     const [favorites, setFavorites] = useState([]);
 
@@ -21,8 +21,8 @@ const Women_JacketList = ({ WomenJacketList }) => {
             <FlatList
                 data={section.data}
                 renderItem={({ item }) => (
-                    <Women_JacketDetail 
-                        WomenJacketDetail={item} 
+                    <Women_TshirtDetail 
+                        WomenTshirtDetail={item} 
                         addToFavorites={addToFavorites} 
                     />
                 )}
@@ -39,7 +39,7 @@ const Women_JacketList = ({ WomenJacketList }) => {
 
     return (
         <SectionList
-            sections={WomenJacketList}
+            sections={WomenTshirtList}
             contentContainerStyle={{ paddingHorizontal: 10 }}
             stickySectionHeadersEnabled={false}
             showsHorizontalScrollIndicator={false}
@@ -61,4 +61,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Women_JacketList;
+export default Women_TshirtList;

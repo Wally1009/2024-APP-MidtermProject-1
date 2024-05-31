@@ -72,6 +72,40 @@ const ShoppingCartScreen = () => {
                 image: item.image,
             });
         }
+        else if(item.type === 'WomenJacket') {
+            navigation.navigate('Women_JacketDetailScreen', {
+                title: item.title,
+                money: item.money,
+                key: item.key,
+                descriptions: item.descriptions,
+                image: item.image,
+            });
+        }
+        else if(item.type === 'WomenTshirt') {
+            navigation.navigate('Women_TshirtDetailScreen', {
+                title: item.title,
+                money: item.money,
+                key: item.key,
+                descriptions: item.descriptions,
+                image: item.image,
+            });
+        }else if(item.type === 'WomenPants') {
+            navigation.navigate('Women_PantsDetailScreen', {
+                title: item.title,
+                money: item.money,
+                key: item.key,
+                descriptions: item.descriptions,
+                image: item.image,
+            });
+        }else if(item.type === 'WomenPerfume') {
+            navigation.navigate('Women_PerfumeDetailScreen', {
+                title: item.title,
+                money: item.money,
+                key: item.key,
+                descriptions: item.descriptions,
+                image: item.image,
+            });
+        }
     };
 
     const renderItem = ({ item }) => (

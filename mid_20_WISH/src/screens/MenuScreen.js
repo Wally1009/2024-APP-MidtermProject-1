@@ -5,6 +5,11 @@ import Men_PerfumeScreen from './Men_PerfumeScreen';
 import Men_JacketScreen from './Men_JacketScreen';
 import Men_PantsScreen from './Men_PantsScreen';
 import Men_TshirtScreen from './Men_TshirtScreen';
+
+import Women_JacketScreen from './Women_JacketScreen';
+import Women_PantsScreen from './Women_PantsScreen';
+import Women_TshirtScreen from './Women_TshirtScreen';
+import Women_PerfumeScreen from './Women_PerfumeScreen';
 import SegmentedControlTab from 'react-native-segmented-control-tab';
 
 
@@ -19,6 +24,7 @@ const MenuScreen = () => {
     const renderContent = () => {
         switch (selectedIndex) {
             case 0:
+                
             case 1:
                 return (
                     <Center flex={1}>
@@ -46,6 +52,14 @@ const MenuScreen = () => {
             navigation.navigate('Men_PantsScreen');
         } else if (selectedIndex === 1 && option === 'Tshirt') {
             navigation.navigate('Men_TshirtScreen');
+        }else if (selectedIndex === 0 && option === 'Jacket') {
+            navigation.navigate('Women_JacketScreen');
+        }else if (selectedIndex === 0 && option === 'Tshirt') {
+            navigation.navigate('Women_TshirtScreen');
+        }else if (selectedIndex === 0 && option === 'Pants') {
+            navigation.navigate('Women_PantsScreen');
+        }else if (selectedIndex === 0 && option === 'Perfume') {
+            navigation.navigate('Women_PerfumeScreen');
         }
     };
 

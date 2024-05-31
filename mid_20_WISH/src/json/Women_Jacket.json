@@ -1,0 +1,42 @@
+[
+    {
+    "title": "Jacket",
+    "data": [
+       {
+         "title": "人造短版皮衣",
+         "money": "NT$2500",
+         "key":0,
+         "descriptions": "非真皮，人造的皮衣讓你用較便宜的價錢體驗龐克的酷炫，短版更顯個性，內搭不論是白色或是黑色都非常好看喔"
+       },
+       {
+         "title": "MLBB毛毛外套",
+         "money": "NT$6000",
+         "key":1,
+         "descriptions": "MLB立領設計毛毛外套，白色底色搭配滿版logo，保暖的同時兼顧時尚"
+       },
+       {
+         "title": "牛仔外套",
+         "money": "NT$2000",
+         "key":2,
+         "descriptions": "輕薄的牛仔外套，讓你在夏天依然可以保持酷炫"
+       },
+       {
+         "title": "西裝外套",
+         "money": "NT$3000",
+         "key":3,
+         "descriptions": "長版的休閒西裝外套，不論是職場上班或是一般上學都很適合喔"
+      },
+      {
+         "title": "Fluffy logo coat",
+         "money": "NT$30000",
+         "key":4,
+         "descriptions": "Balenciagaa的滿版logo毛毛外套，黑色底色搭配白色logo，Rupert推薦是能登上VOGUE的時尚"
+      },
+      {
+         "title": "Guci外套",
+         "money": "NT$25000",
+         "key":5,
+         "descriptions": "底色大地色，搭配Guci滿版設計，穿上去逛街彷彿遊走在巴黎街頭，看著101都像是在看La Tour Eiffel"
+      }
+    ]}
+ ]

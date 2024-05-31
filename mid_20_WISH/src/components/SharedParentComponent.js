@@ -9,6 +9,12 @@ import Men_PantsDetail from './Men_PantsDetail';
 import Men_PantsDetailScreen from './Men_PantsDetailScreen';
 import Men_TshirtDetail from './Men_TshirtDetail';
 import Men_TshirtDetailScreen from './Men_TshirtDetailScreen';
+import Women_JacketDetail from './Women_JacketDetail';
+import Women_JacketDetailScreen from './Women_JacketDetailScreen';
+import Women_TshirtDetail from './Women_TshirtDetail';
+import Women_TshirtDetailScreen from './Women_TshirtDetailScreen';
+import Women_PerfumeDetail from './Women_PerfumeDetail';
+import Women_PerfumeDetailScreen from './Women_PerfumeDetailScreen';
 
 
 const SharedParentComponent = () => {
@@ -16,6 +22,10 @@ const SharedParentComponent = () => {
 
   return (
     <>
+      <Women_JacketDetail heartClicked={heartClicked} setHeartClicked={setHeartClicked} />
+      <Women_JacketDetailScreen heartClicked={heartClicked} setHeartClicked={setHeartClicked} /> 
+      <Women_TshirtDetail heartClicked={heartClicked} setHeartClicked={setHeartClicked} />
+      <Women_TshirtDetailScreen heartClicked={heartClicked} setHeartClicked={setHeartClicked} />
       <Men_PerfumeDetail heartClicked={heartClicked} setHeartClicked={setHeartClicked} />
       <Men_PerfumeDetailScreen heartClicked={heartClicked} setHeartClicked={setHeartClicked} />
       <Men_JacketDetail heartClicked={heartClicked} setHeartClicked={setHeartClicked} />
@@ -24,6 +34,7 @@ const SharedParentComponent = () => {
       <Men_PantsDetailScreen heartClicked={heartClicked} setHeartClicked={setHeartClicked} />
       <Men_TshirtDetail heartClicked={heartClicked} setHeartClicked={setHeartClicked} />
       <Men_TshirtDetailScreen heartClicked={heartClicked} setHeartClicked={setHeartClicked} />
+      <Men_PerfumeDetailScreen heartClicked={heartClicked} setHeartClicked={setHeartClicked} />
     </>
   );
 };

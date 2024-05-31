@@ -14,6 +14,18 @@ import ShoppingCartScreen from "../screens/ShoppingCartScreen";
 import AccountScreen from "../screens/AccountScreen";
 import SearchScreen from "../screens/SearchScreen";
 import HeartScreen from "../screens/HeartScreen";
+import Women_JacketDetailScreen from "../screens/Women_JacketDetailScreen";
+import Women_JacketScreen from "../screens/Women_JacketScreen";
+import WomenJacketData from "../json/Women_Jacket.json";
+import Women_TshirtDetailScreen from "../screens/Women_TshirtDetailScreen";
+import Women_TshirtScreen from "../screens/Women_TshirtScreen";
+import WomenTshirtData from "../json/Women_Tshirt.json";
+import Women_PerfumeDetailScreen from "../screens/Women_PerfumeDetailScreen";
+import Women_PerfumeScreen from "../screens/Women_PerfumeScreen";
+import WomenPerfumeData from "../json/Women_Perfume.json";
+import Women_PantsDetailScreen from "../screens/Women_PantsDetailScreen";
+import Women_PantsScreen from "../screens/Women_PantsScreen";
+import WomenPantsData from "../json/Women_Pants.json";
 import Men_PerfumeDetailScreen from "../screens/Men_PerfumeDetailScreen";
 import Men_PerfumeScreen from "../screens/Men_PerfumeScreen";
 import MenPerfumeData from "../json/Men_Perfume.json";
@@ -130,6 +142,102 @@ const MenuStack = ({ navigation }) => {
                     },
                     
                 })}
+            />
+            <Stack.Screen
+              name="Women_JacketScreen"
+              component={Women_JacketScreen}
+              options={{
+                title: WomenJacketData.title,
+                headerTitleStyle: {
+                    fontWeight: '400',
+                    fontSize: 20,
+                },
+              
+              }}
+            />
+            <Stack.Screen
+              name="Women_JacketDetailScreen"
+              component={Women_JacketDetailScreen}
+              options={({ route }) => ({
+                title: route.params.title,
+                headerTintColor: '#000',
+                headerTitleStyle: {
+                    fontWeight: '400',
+                    fontSize: 20
+                },
+            })}
+            />
+            <Stack.Screen
+              name="Women_PerfumeScreen"
+              component={Women_PerfumeScreen}
+              options={{
+                title: WomenPerfumeData.title,
+                headerTitleStyle: {
+                    fontWeight: '400',
+                    fontSize: 20,
+                },
+              
+              }}
+            />
+            <Stack.Screen
+              name="Women_PerfumeDetailScreen"
+              component={Women_PerfumeDetailScreen}
+              options={({ route }) => ({
+                title: route.params.title,
+                headerTintColor: '#000',
+                headerTitleStyle: {
+                    fontWeight: '400',
+                    fontSize: 20
+                },
+            })}
+            />
+            <Stack.Screen
+              name="Women_TshirtScreen"
+              component={Women_TshirtScreen}
+              options={{
+                title: WomenTshirtData.title,
+                headerTitleStyle: {
+                    fontWeight: '400',
+                    fontSize: 20,
+                },
+              
+              }}
+            />
+            <Stack.Screen
+              name="Women_TshirtDetailScreen"
+              component={Women_TshirtDetailScreen}
+              options={({ route }) => ({
+                title: route.params.title,
+                headerTintColor: '#000',
+                headerTitleStyle: {
+                    fontWeight: '400',
+                    fontSize: 20
+                },
+            })}
+            />
+            <Stack.Screen
+              name="Women_PantsScreen"
+              component={Women_PantsScreen}
+              options={{
+                title: WomenPantsData.title,
+                headerTitleStyle: {
+                    fontWeight: '400',
+                    fontSize: 20,
+                },
+              
+              }}
+            />
+            <Stack.Screen
+              name="Women_PantsDetailScreen"
+              component={Women_PantsDetailScreen}
+              options={({ route }) => ({
+                title: route.params.title,
+                headerTintColor: '#000',
+                headerTitleStyle: {
+                    fontWeight: '400',
+                    fontSize: 20
+                },
+            })}
             />
             <Stack.Screen
               name="Men_TshirtScreen"
@@ -255,6 +363,53 @@ const Cartstack =({ navigation }) => {
                         </Pressable>
                     ),
                 }}
+            />
+            <Stack.Screen
+                name="Women_JacketDetailScreen"
+                component={Women_JacketDetailScreen}
+                options={({ route }) => ({
+                    title: route.params.title,
+                    headerTintColor: '#000',
+                    headerTitleStyle: {
+                        fontWeight: '400',
+                        fontSize: 20
+                    },
+                })}
+            /><Stack.Screen
+            name="Women_PerfumeDetailScreen"
+            component={Women_PerfumeDetailScreen}
+            options={({ route }) => ({
+                title: route.params.title,
+                headerTintColor: '#000',
+                headerTitleStyle: {
+                    fontWeight: '400',
+                    fontSize: 20
+                },
+            })}
+        />
+            <Stack.Screen
+                name="Women_TshirtDetailScreen"
+                component={Women_TshirtDetailScreen}
+                options={({ route }) => ({
+                    title: route.params.title,
+                    headerTintColor: '#000',
+                    headerTitleStyle: {
+                        fontWeight: '400',
+                        fontSize: 20
+                    },
+                })}
+            />
+            <Stack.Screen
+                name="Women_PantsDetailScreen"
+                component={Women_PantsDetailScreen}
+                options={({ route }) => ({
+                    title: route.params.title,
+                    headerTintColor: '#000',
+                    headerTitleStyle: {
+                        fontWeight: '400',
+                        fontSize: 20
+                    },
+                })}
             />
              <Stack.Screen
                 name="Men_TshirtDetailScreen"
