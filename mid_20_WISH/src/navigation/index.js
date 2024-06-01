@@ -42,6 +42,8 @@ import FashionDetailScreen from "../screens/Fashion/FashionDetailScreen";
 import FashionScreen from "../screens/Fashion/FashionScreen";
 import FashionData from "../json/Fashion.json";
 
+import SearchBar from "../components/SearchBar";
+
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -122,8 +124,11 @@ const Homestack = ({ navigation }) => {
             <Stack.Screen
                 name="Search"
                 component={SearchScreen}
-                options={{title:'Search'}}
+                options={{
+                    title:"Search",
+                }}
             />
+            
         </Stack.Navigator>
     ); 
 }
