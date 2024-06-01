@@ -31,7 +31,9 @@ const styles = StyleSheet.create({
         fontSize:32,
         fontWeight:'bold',
         marginLeft:25,
-        marginTop:20
+        marginTop:20,
+        marginBottom:20,
+        color:'#000000'
     },
     magnify:{
         marginLeft:20,

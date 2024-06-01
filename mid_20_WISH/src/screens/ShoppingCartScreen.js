@@ -191,7 +191,9 @@ const styles = StyleSheet.create({
         fontSize: 32,
         fontWeight: 'bold',
         marginLeft: 30,
-        marginTop: 20
+        marginTop: 20,
+        marginBottom:20,
+        color:'#000000'
     },
     cartplus: {
         marginBottom: 40,

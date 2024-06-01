@@ -1,5 +1,6 @@
 
 import React from "react";
+import { useSelector } from "react-redux";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -11,9 +12,13 @@ import { StyleSheet, Platform } from "react-native";
 import HomeScreen from "../screens/HomeScreen";
 import MenuScreen from "../screens/MenuScreen";
 import ShoppingCartScreen from "../screens/ShoppingCartScreen";
-import AccountScreen from "../screens/AccountScreen";
+import AccountScreen from "../screens/Account/AccountScreen";
+import DisplaySettingScreen from "../screens/Account/DisplaySettingScreen";
+import PersonalScreen from "../screens/Account/PersonalScreen";
+import SettingsScreen from "../screens/Account/SettingScreen";
 import SearchScreen from "../screens/SearchScreen";
 import HeartScreen from "../screens/HeartScreen";
+
 import Women_JacketDetailScreen from "../screens/Women_JacketDetailScreen";
 import Women_JacketScreen from "../screens/Women_JacketScreen";
 import WomenJacketData from "../json/Women_Jacket.json";
@@ -42,21 +47,27 @@ import FashionDetailScreen from "../screens/Fashion/FashionDetailScreen";
 import FashionScreen from "../screens/Fashion/FashionScreen";
 import FashionData from "../json/Fashion.json";
 
-import SearchBar from "../components/SearchBar";
+
+import { selectHasLogin } from "../redux/accountSlice";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
+    const hasLogin = useSelector(selectHasLogin);
     return(
         <KeyboardAvoidingView
             keyboardVerticalOffset={Platform.select({ ios: 0, android: -500 })}
             behavior={Platform.OS === "ios" ? "padding" : "height"}
             flex={1}
         >
-            <NavigationContainer>
-                <MyTab/>
-            </NavigationContainer>
+            {
+                !hasLogin ? <AccountScreen/> :(
+                    <NavigationContainer>
+                        <MyTab/>
+                    </NavigationContainer>
+                )
+            }
         </KeyboardAvoidingView>
     )
 }
@@ -74,7 +85,7 @@ const MyTab = () => {
                         iconName = focused ? 'dots-horizontal-circle' : 'dots-horizontal-circle-outline';
                     } else if ( route.name === 'Cartstack'){
                         iconName = focused ? 'cart' : 'cart-outline';
-                    } else if ( route.name === 'Accountstack'){
+                    } else if ( route.name === 'Settingstack'){
                         iconName = focused ? 'account' : 'account-outline';
                     }
                     return <MaterialCommunityIcons name={iconName} size={size} color='#FFFFFF' />
@@ -93,7 +104,7 @@ const MyTab = () => {
             <Tab.Screen name="Homestack" component={Homestack}/>
             <Tab.Screen name="Menustack" component={MenuStack}/>
             <Tab.Screen name="Cartstack" component={Cartstack}/>
-            <Tab.Screen name="Accountstack" component={Accountstack}/>
+            <Tab.Screen name="Settingstack" component={Settingstack}/>
         </Tab.Navigator>
     )
 }
@@ -174,8 +185,8 @@ const MenuStack = ({ navigation }) => {
                     <Pressable onPress={() => navigation.navigate('Menu')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
-                            size={24}
-                            style={{ marginLeft: 10, color: 'white' }}
+                            size={30}
+                            style={{ marginBottom:20, color: 'white' }}
                         />
                     </Pressable>
                 ),
@@ -196,8 +207,8 @@ const MenuStack = ({ navigation }) => {
                     <Pressable onPress={() => navigation.navigate('Menu')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
-                            size={24}
-                            style={{ marginLeft: 10, color: 'white' }}
+                            size={30}
+                            style={{ marginBottom:20, color: 'white' }}
                         />
                     </Pressable>
                 ),
@@ -219,8 +230,8 @@ const MenuStack = ({ navigation }) => {
                     <Pressable onPress={() => navigation.navigate('Women_JacketScreen')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
-                            size={24}
-                            style={{ marginLeft: 10, color: 'white' }}
+                            size={30}
+                            style={{ marginBottom:20, color: 'white' }}
                         />
                     </Pressable>
                 ),
@@ -241,8 +252,8 @@ const MenuStack = ({ navigation }) => {
                     <Pressable onPress={() => navigation.navigate('Menu')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
-                            size={24}
-                            style={{ marginLeft: 10, color: 'white' }}
+                            size={30}
+                            style={{ marginBottom:20, color: 'white' }}
                         />
                     </Pressable>
                 ),
@@ -264,8 +275,8 @@ const MenuStack = ({ navigation }) => {
                     <Pressable onPress={() => navigation.navigate('Women_PerfumeScreen')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
-                            size={24}
-                            style={{ marginLeft: 10, color: 'white' }}
+                            size={30}
+                            style={{ marginBottom:20, color: 'white' }}
                         />
                     </Pressable>
                 ),
@@ -286,8 +297,8 @@ const MenuStack = ({ navigation }) => {
                     <Pressable onPress={() => navigation.navigate('Menu')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
-                            size={24}
-                            style={{ marginLeft: 10, color: 'white' }}
+                            size={30}
+                            style={{ marginBottom:20, color: 'white' }}
                         />
                     </Pressable>
                 ),
@@ -309,8 +320,8 @@ const MenuStack = ({ navigation }) => {
                     <Pressable onPress={() => navigation.navigate('Women_TshirtScreen')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
-                            size={24}
-                            style={{ marginLeft: 10, color: 'white' }}
+                            size={30}
+                            style={{ marginBottom:20, color: 'white' }}
                         />
                     </Pressable>
                 ),
@@ -331,8 +342,8 @@ const MenuStack = ({ navigation }) => {
                     <Pressable onPress={() => navigation.navigate('Menu')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
-                            size={24}
-                            style={{ marginLeft: 10, color: 'white' }}
+                            size={30}
+                            style={{ marginBottom:20, color: 'white' }}
                         />
                     </Pressable>
                 ),
@@ -354,8 +365,8 @@ const MenuStack = ({ navigation }) => {
                     <Pressable onPress={() => navigation.navigate('Women_PantsScreen')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
-                            size={24}
-                            style={{ marginLeft: 10, color: 'white' }}
+                            size={30}
+                            style={{ marginBottom:20, color: 'white' }}
                         />
                     </Pressable>
                 ),
@@ -375,8 +386,8 @@ const MenuStack = ({ navigation }) => {
                     <Pressable onPress={() => navigation.navigate('Menu')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
-                            size={24}
-                            style={{ marginLeft: 10, color: 'white' }}
+                            size={30}
+                            style={{ marginBottom:20, color: 'white' }}
                         />
                     </Pressable>
                 ),
@@ -398,8 +409,8 @@ const MenuStack = ({ navigation }) => {
                     <Pressable onPress={() => navigation.navigate('Men_TshirtScreen')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
-                            size={24}
-                            style={{ marginLeft: 10, color: 'white' }}
+                            size={30}
+                            style={{ marginBottom:20, color: 'white' }}
                         />
                     </Pressable>
                 ),
@@ -420,8 +431,8 @@ const MenuStack = ({ navigation }) => {
                     <Pressable onPress={() => navigation.navigate('Menu')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
-                            size={24}
-                            style={{ marginLeft: 10, color: 'white' }}
+                            size={30}
+                            style={{ marginBottom:20, color: 'white' }}
                         />
                     </Pressable>
                 ),
@@ -443,8 +454,8 @@ const MenuStack = ({ navigation }) => {
                     <Pressable onPress={() => navigation.navigate('Men_JacketScreen')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
-                            size={24}
-                            style={{ marginLeft: 10, color: 'white' }}
+                            size={30}
+                            style={{ marginBottom:20, color: 'white' }}
                         />
                     </Pressable>
                 ),
@@ -465,8 +476,8 @@ const MenuStack = ({ navigation }) => {
                     <Pressable onPress={() => navigation.navigate('Menu')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
-                            size={24}
-                            style={{ marginLeft: 10, color: 'white' }}
+                            size={30}
+                            style={{ marginBottom:20, color: 'white' }}
                         />
                     </Pressable>
                 ),
@@ -488,8 +499,8 @@ const MenuStack = ({ navigation }) => {
                     <Pressable onPress={() => navigation.navigate('Men_PantsScreen')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
-                            size={24}
-                            style={{ marginLeft: 10, color: 'white' }}
+                            size={30}
+                            style={{ marginBottom:20, color: 'white' }}
                         />
                     </Pressable>
                 ),
@@ -510,8 +521,8 @@ const MenuStack = ({ navigation }) => {
                     <Pressable onPress={() => navigation.navigate('Menu')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
-                            size={24}
-                            style={{ marginLeft: 10, color: 'white' }}
+                            size={30}
+                            style={{ marginBottom:20, color: 'white' }}
                         />
                     </Pressable>
                 ),
@@ -533,8 +544,8 @@ const MenuStack = ({ navigation }) => {
                     <Pressable onPress={() => navigation.navigate('Men_PerfumeScreen')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
-                            size={24}
-                            style={{ marginLeft: 10, color: 'white' }}
+                            size={30}
+                            style={{ marginBottom:20, color: 'white' }}
                         />
                     </Pressable>
                 ),
@@ -699,12 +710,12 @@ const Cartstack =({ navigation }) => {
     );
 }
 
-const Accountstack = ({ navigation }) => {
+const Settingstack = ({ navigation }) => {
     return(
         <Stack.Navigator>
             <Stack.Screen 
-                name="Account"
-                component={AccountScreen}
+                name="Settings"
+                component={SettingsScreen}
                 options={{
                         title:"",
                         headerStyle:{
@@ -712,6 +723,26 @@ const Accountstack = ({ navigation }) => {
                             height: 60,
                         },
                     }}
+            />
+            <Stack.Screen
+                name="DisplaySetting"
+                component={DisplaySettingScreen}
+                options={{
+                    title:"",
+                    headerStyle:{
+                        height: 60,
+                    },
+                }}
+            />
+            <Stack.Screen
+                name="Personal"
+                component={PersonalScreen}
+                options={{
+                    title:"",
+                    headerStyle:{
+                        height: 60,
+                    },
+                }}
             />
         </Stack.Navigator>
     ); 

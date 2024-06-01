@@ -1,6 +1,5 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import { StyleSheet } from "react-native";
-
 import {
     FormControlError,
     FormControlErrorText,
@@ -12,18 +11,40 @@ import {
     Input,
     InputField,
     Button,
-    Box
+    Box,
+    Link,
+    LinkText,
+    ButtonText
   } from "@gluestack-ui/themed";
+import { setGeneralAccountInfo } from "../../redux/accountSlice";
+import { selectGeneral } from "../../redux/accountSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../redux/accountSlice";
 
 const AccountScreen = () => {
-    const [email, setEmail] = useState("");
+    const general = useSelector(selectGeneral);
+    const dispatch = useDispatch();
+    const [email, setEmail] = useState(general.email);
     const [emailIsError, setEmailIsError] = useState(true);
-    const [password, setPassword] = useState("");
+    const [password, setPassword] = useState(general.password);
     const [passwordIsError, setpasswordIsError] = useState(true);
 
     console.log({email, emailIsError});
+    console.log({password, passwordIsError});
+    
     const passwordRegex = /^[a-zA-Z]+\w*$/;
     const emailRegex = /w{3,}@[a-zA-Z]{2,5}(\.[a-zA-Z]{2,5}){1,}$/
+
+    useEffect(() => {
+        if(!emailIsError && !passwordIsError)
+            dispatch(setGeneralAccountInfo({ email, password}))
+
+        if(email.match(emailRegex)) setEmailIsError(false)
+        else setEmailIsError(true)
+
+        if(password.match(passwordRegex)) setpasswordIsError(false)
+        else setpasswordIsError(true)
+    },[email, password]);
 
     return(
         <Box>
@@ -40,7 +61,7 @@ const AccountScreen = () => {
                             value={email}
                             onChangeText={(text) => {
                                 setEmail(text);
-                                if (text.match(emailRegex)) setEmailIsError(false);
+                                if (emailRegex.test(text)) setEmailIsError(false);
                                 else setEmailIsError(true);
                             }}
                         />
@@ -59,7 +80,7 @@ const AccountScreen = () => {
                             value={password} 
                             onChangeText={(text) => {
                                 setPassword(text);
-                                if (text.match(passwordRegex)) setpasswordIsError(false);
+                                if (passwordRegex.test(text)) setpasswordIsError(false);
                                 else setpasswordIsError(true);
                             }}
                         />
@@ -76,14 +97,17 @@ const AccountScreen = () => {
                     variant='outline'
                     borderColor='#000000'
                     borderRadius={0}
+                    onPress={() => dispatch(login())}
                 >
-                    <Text style={{fontFamily:"Roboto",fontWeight:'bold',color:'#000000',fontSize:14}}>
+                    <ButtonText style={{fontFamily:"Roboto",fontWeight:'bold',color:'#000000',fontSize:14}}>
                         登入
-                    </Text>
+                    </ButtonText>
                 </Button>
-                <Text style={{fontFamily:"Roboto",color:'#909090',fontSize:12,marginTop:10,letterSpacing:1}}>
-                    忘記密碼？
-                </Text>
+                <Link style={{fontFamily:"Roboto",color:'#909090',fontSize:12,marginTop:10,letterSpacing:1}}>
+                    <LinkText>
+                        忘記密碼？
+                    </LinkText>
+                </Link>
                 <Text style={{fontFamily:"Roboto",fontWeight:'bold',color:'#000000',fontSize:16,marginTop:45,letterSpacing:1}}>
                     需要一個帳戶？
                 </Text>
