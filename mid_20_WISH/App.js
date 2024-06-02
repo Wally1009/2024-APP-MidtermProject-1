@@ -6,7 +6,7 @@ import { config } from '@gluestack-ui/config';
 import Navigation from './src/navigation';
 import { FavoriteProvider } from './src/Context/FavoriteContext';
 import { CartProvider } from './src/Context/CartContext';
-import { store } from './src/redux/store';
+import { store } from './src/Redux/store';
 
 const App = () => {
   return(
@@ -16,7 +16,7 @@ const App = () => {
         <GluestackUIProvider config={config}>
           <FavoriteProvider>
             <CartProvider>
-            <Navigation/>
+              <Navigation/>
             </CartProvider>
           </FavoriteProvider>
         </GluestackUIProvider>
