@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 import { Center, Button, ButtonText, Box, Text } from "@gluestack-ui/themed";
 import ListItem from "../../components/ListItem"
 import { useDispatch } from "react-redux";
-import { logout } from "../../Redux/accountSlice"
+import { logout } from "../../redux/accountSlice"
 
 const SettingsScreen = () => {
   const dispatch = useDispatch();

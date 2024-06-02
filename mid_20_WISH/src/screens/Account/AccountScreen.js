@@ -16,10 +16,10 @@ import {
     LinkText,
     ButtonText
   } from "@gluestack-ui/themed";
-import { setGeneralAccountInfo } from "../../Redux/accountSlice";
-import { selectGeneral } from "../../Redux/accountSlice";
+import { setGeneralAccountInfo } from "../../redux/accountSlice";
+import { selectGeneral } from "../../redux/accountSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../Redux/accountSlice";
+import { login } from "../../redux/accountSlice";
 
 const AccountScreen = () => {
     const general = useSelector(selectGeneral);
@@ -33,11 +33,11 @@ const AccountScreen = () => {
     console.log({password, passwordIsError});
     
     const passwordRegex = /^[a-zA-Z]+\w*$/;
-    const emailRegex = /\w{3,}@[a-zA-Z]{2,5}(\.[a-zA-Z]{2,5}){1,}$/
+    const emailRegex = /w{3,}@[a-zA-Z]{2,5}(\.[a-zA-Z]{2,5}){1,}$/
 
     useEffect(() => {
         if(!emailIsError && !passwordIsError)
-            dispatch(setGeneralAccountInfo({ email, password }))
+            dispatch(setGeneralAccountInfo({ email, password}))
 
         if(email.match(emailRegex)) setEmailIsError(false)
         else setEmailIsError(true)

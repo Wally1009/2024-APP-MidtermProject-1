@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useSelector } from "react-redux";
 import { NavigationContainer } from "@react-navigation/native";
@@ -46,7 +47,8 @@ import FashionDetailScreen from "../screens/Fashion/FashionDetailScreen";
 import FashionScreen from "../screens/Fashion/FashionScreen";
 import FashionData from "../json/Fashion.json";
 
-import { selectHasLogin } from "../Redux/accountSlice";
+
+import { selectHasLogin } from "../redux/accountSlice";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
