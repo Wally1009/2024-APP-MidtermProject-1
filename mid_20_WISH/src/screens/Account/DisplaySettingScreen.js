@@ -1,25 +1,124 @@
-import React from 'react';
-import { Center, Switch, HStack, Text } from '@gluestack-ui/themed';
+import { Appearance, Dimensions, useColorScheme } from "react-native";
+import { Center, Box, Text, Pressable } from "@gluestack-ui/themed";
+import Animated, {
+  interpolateColor,
+  useAnimatedStyle,
+  useDerivedValue,
+  withTiming,
+} from "react-native-reanimated";
+import Ionicon from "react-native-vector-icons/Ionicons";
+import { useDispatch, useSelector } from "react-redux";
+import { selectIsDarkMode } from "../../Redux/accountSlice";
+import { toggleDarkMode } from "../../Redux/accountSlice";
 
+const AnimatedBox = Animated.createAnimatedComponent(Box);
+const AnimatedCenter = Animated.createAnimatedComponent(Center);
+const AnimatedText = Animated.createAnimatedComponent(Text);
+const AnimatedIonicon = Animated.createAnimatedComponent(Ionicon);
+
+const WIDTH = Dimensions.get("window").width * 0.7;
+
+const Colors = {
+  dark: {
+    background: "#1E1E1E",
+    circle: "#252525",
+    icon: "#000",
+    text: "#F8F8F8",
+  },
+  light: {
+    background: "#F8F8F8",
+    circle: "#FFF",
+    icon: "#F4F4F5",
+    text: "#1E1E1E",
+  },
+};
 const DisplaySettingScreen = () => {
-  return (
-     <Center
-      shadow={2} width="90%"
-      mt="$2" px="$2" py="$4"
-      bg="white" borderRadius={3} 
-      alignSelf="center"
-     >
-      <HStack space={8} alignItems="center" >
-         <Text size="lg" px="$2">Light Mode</Text>
-         <Switch
-            name="light Mode"
-            size='md'
-            accessibilityLabel="display-mode"
-            accessibilityHint="light or dark mode"
-         />
-      </HStack>        
-     </Center>
-  );
+    const isDarkMode = useSelector(selectIsDarkMode);
+    const dispatch = useDispatch();
+    const colorScheme = useColorScheme();
+
+    const toggleColorMode = () => {
+      const nextColorScheme = colorScheme === "light" ? "dark" : "light";
+      Appearance.setColorScheme(nextColorScheme);
+    };
+  
+    const progress = useDerivedValue(() => {
+      return withTiming(colorScheme === "dark" ? 1 : 0, { duration: 2000 });
+    });
+  
+    const animatedStyle = useAnimatedStyle(() => {
+      const backgroundColor = interpolateColor(
+        progress.value,
+        [0, 1],
+        [Colors.light.background, Colors.dark.background]
+      );
+      return {
+        backgroundColor,
+      };
+    });
+  
+    const animatedCircleStyle = useAnimatedStyle(() => {
+      const backgroundColor = interpolateColor(
+        progress.value,
+        [0, 1],
+        [Colors.light.circle, Colors.dark.circle]
+      );
+      return {
+        backgroundColor,
+      };
+    });
+  
+    const animatedIconStyle = useAnimatedStyle(() => {
+      const backgroundColor = interpolateColor(
+        progress.value,
+        [0, 1],
+        [Colors.light.icon, Colors.dark.icon]
+      );
+      return {
+        backgroundColor,
+      };
+    });
+  
+    const animatedTextStyle = useAnimatedStyle(() => {
+      const color = interpolateColor(
+        progress.value,
+        [0, 1],
+        [Colors.light.text, Colors.dark.text]
+      );
+      return {
+        color,
+      };
+    });
+  
+    return (
+      <AnimatedCenter flex={1} style={animatedStyle}>
+        <AnimatedText
+          fontSize={40}
+          fontWeight={"700"}
+          marginBottom={35}
+          style={animatedTextStyle}
+        >
+          darkMode
+        </AnimatedText>
+        <AnimatedCenter
+          w={WIDTH}
+          h={WIDTH}
+          borderRadius={WIDTH / 2}
+          shadow="4"
+          style={animatedCircleStyle}
+        >
+          <Pressable onPress={toggleColorMode}>
+            <AnimatedBox borderRadius={40} style={animatedIconStyle}>
+              <AnimatedIonicon
+                name={colorScheme == "dark" ? "moon-outline" : "sunny-outline"}
+                size={40}
+                style={animatedTextStyle}
+              />
+            </AnimatedBox>
+          </Pressable>
+        </AnimatedCenter>
+      </AnimatedCenter>
+    );
 };
 
 export default DisplaySettingScreen;
