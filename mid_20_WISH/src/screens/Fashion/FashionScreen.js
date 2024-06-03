@@ -4,11 +4,13 @@ import { Box } from "@gluestack-ui/themed";
 import FashionList from '../../components/Fashion/FashionList';
 import FashionData from "../../json/Fashion.json";
 import { useNavigation } from '@react-navigation/native';
-import { FlatList } from 'react-native';
+import { useSelector } from "react-redux";
+import { selectColorMode } from "../../Redux/accountSlice";
 
 const FashionScreen = () => {
     const navigation = useNavigation();
-
+    const colorMode = useSelector(selectColorMode);
+    const backgroundMode = colorMode == 'light' ? 'white' : 'black'
     useLayoutEffect(() => {
         navigation.getParent()?.setOptions({
             tabBarStyle: { display: 'none' },

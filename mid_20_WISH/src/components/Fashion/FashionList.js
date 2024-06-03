@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { SectionList, Text, StyleSheet,FlatList } from "react-native";
 import FashionDetail from './FashionDetail';
+import { useSelector } from "react-redux";
+import { selectColorMode } from "../../Redux/accountSlice";
 
 const FashionList = ({ FashionList }) => {
+    const colorMode = useSelector(selectColorMode);
+    const backgroundMode = colorMode == 'light' ? 'white' : 'black'
     // 定义一个状态用于存储收藏夹中的商品
     const [favorites, setFavorites] = useState([]);
 
@@ -17,7 +21,7 @@ const FashionList = ({ FashionList }) => {
 
     const renderSection = ({ section }) => (
         <>
-            <Text style={styles.title}>{section.title}</Text>
+            <Text style={styles.title} >{section.title}</Text>
             <FlatList
                 data={section.data}
                 renderItem={({ item }) => (
@@ -29,6 +33,7 @@ const FashionList = ({ FashionList }) => {
                 showsHorizontalScrollIndicator={false}
                 keyExtractor={(item) => item.key}
                 numColumns={2}
+
             />
         </>
     );

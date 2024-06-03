@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { StyleSheet, View, FlatList, Image, Pressable } from "react-native";
 import { Box, Center, Text } from '@gluestack-ui/themed';
@@ -8,7 +7,8 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import HeartWhiteImg from '../../src/img/heart-plus-outline (1).png';
 import HeartBlackImg from '../../src/img/heart-plus-outline-black.png';
 import { useFavorites } from '../Context/FavoriteContext';
-
+import { useSelector } from "react-redux";
+import { selectColorMode } from "../Redux/accountSlice";
 
 
 const ShoppingCartScreen = () => {
@@ -16,6 +16,11 @@ const ShoppingCartScreen = () => {
     const navigation = useNavigation();
     const isFocused = useIsFocused();
     const { favorites, addFavorite, removeFavorite } = useFavorites();
+
+    const colorMode = useSelector(selectColorMode);
+    const backgroundMode = colorMode == 'light' ? 'white' : 'black'
+    const textMode = colorMode == 'light' ? 'black' : 'white'
+    const iconMode = colorMode == 'light' ? 'black' : 'white'
 
     useEffect(() => {
         // 重新渲染購物車畫面時的操作
@@ -123,24 +128,25 @@ const ShoppingCartScreen = () => {
                 <Image source={item.image} style={styles.image} />
             </Pressable>
             <View style={styles.infoContainer}>
-                <Text style={styles.title}>{item.title}</Text>
-                <Text style={styles.money}>{item.money}</Text>
-                <View style={styles.infoContainer}>
-                    <Pressable onPress={()=>toggleHeartIcon(item)}>
+                <Text style={styles.title} color={textMode}>{item.title}</Text>
+                <Text style={styles.money} color={textMode}>{item.money}</Text>
+                <View style={styles.infoContainer} color={iconMode}>
+                    <Pressable onPress={()=>toggleHeartIcon(item)} >
                         <Image
                             source={favorites.includes(item.key)?HeartBlackImg:HeartWhiteImg}
                             style={styles.icon}
+                            
                         />
                     </Pressable>
                 </View>
                 
-                <View style={styles.quantityContainer}>
+                <View style={styles.quantityContainer} >
                     <Pressable onPress={() => handleDecreaseQuantity(item)}>
-                        <MaterialCommunityIcons name="minus" size={24} style={styles.quantityButton} />
+                        <MaterialCommunityIcons name="minus" size={24} style={styles.quantityButton} color={iconMode}/>
                     </Pressable>
                     <Text style={styles.quantity}>{item.quantity}</Text>
                     <Pressable onPress={() => handleIncreaseQuantity(item)}>
-                        <MaterialCommunityIcons name="plus" size={24} style={styles.quantityButton} />
+                        <MaterialCommunityIcons name="plus" size={24} style={styles.quantityButton} color={iconMode}/>
                     </Pressable>
                 </View>
             </View>
@@ -148,15 +154,15 @@ const ShoppingCartScreen = () => {
     );
 
     return (
-        <Box style={styles.container}>
-            <Text style={styles.cart}>購物車</Text>
+        <Box style={styles.container} bg={backgroundMode}>
+            <Text style={styles.cart} color={textMode}>購物車</Text>
             {cartItems.length === 0 ? (
-                <Center style={{ top: 170 }}>
-                    <MaterialCommunityIcons name='cart-plus' size={24} styles={styles.cartplus} />
+                <Center style={{ top: 170 }}>   
+                    <MaterialCommunityIcons name='cart-plus' size={24} styles={styles.cartplus} color={iconMode}/>
                     <Box>
                         <Center>
-                            <Text style={styles.text}>您的購物車是空的</Text>
-                            <Text style={styles.text}>添加商品到購物車吧</Text>
+                            <Text style={styles.text} color={textMode}>您的購物車是空的</Text>
+                            <Text style={styles.text} color={textMode}>添加商品到購物車吧</Text>
                         </Center>
                     </Box>
                 </Center>
@@ -193,23 +199,20 @@ const styles = StyleSheet.create({
         marginLeft: 30,
         marginTop: 20,
         marginBottom:20,
-        color:'#000000'
+        
     },
     cartplus: {
         marginBottom: 40,
-        color: '#000',
         position: 'relative',
     },
     text: {
         fontFamily: "Roboto",
-        color: '#909090',
         marginTop: 25
     },
     quantity: {
         fontFamily: "Roboto",
         fontSize: 14,
         marginTop: 5,
-        color: '#555'
     },
     itemContainer: {
         flexDirection: 'row',
@@ -237,7 +240,6 @@ const styles = StyleSheet.create({
     money: {
         fontFamily: "Roboto",
         fontSize: 12,
-        color: '#555',
         marginTop:13
     },
     quantityContainer: {

@@ -3,9 +3,15 @@ import { Box, Text } from "@gluestack-ui/themed";
 import { View, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 import { Image } from "react-native";
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated";
+import { useSelector } from "react-redux";
+import { selectColorMode } from "../Redux/accountSlice";
 
 const SearchBar = ({ onSearch }) => {
     const [searchText, setSearchText] = useState('');
+    const colorMode = useSelector(selectColorMode);
+    const textMode = colorMode == 'light' ? 'black' : 'white'
+    const iconMode = colorMode == 'light' ? 'black' : 'white'
+    const searchMode = colorMode == 'light' ? 'white' : '#6B6B6B'
 
     const handleSearch = (text) => {
         setSearchText(text);
@@ -22,13 +28,15 @@ const SearchBar = ({ onSearch }) => {
         };
     });
     return(
-        <Box style={{flex: 1, justifyContent:'flex-start',alignItems:'center', marginTop:20}}>
+        <Box 
+            style={{flex: 1, justifyContent:'flex-start',alignItems:'center',marginTop:20}}
+            >
             <Animated.View
                 style={[
                 {
                     width:300, 
                     height:50, 
-                    backgroundColor:'#E7E7E7',
+                    backgroundColor:searchMode,
                     borderRadius: 20,
                     flexDirection: 'row',
                     alignItems:'center'
@@ -38,7 +46,7 @@ const SearchBar = ({ onSearch }) => {
                 <TextInput 
                     style={{width:'85%'}} 
                     placeholder="搜尋..." 
-                    placeholderTextColor={'#6B6B6B'} 
+                    placeholderTextColor={textMode} 
                     value={searchText}
                     onChangeText={handleSearch}
                 />
@@ -52,6 +60,7 @@ const SearchBar = ({ onSearch }) => {
                             setValue(1);
                         }
                     }}
+                    
                 >
                     <Image
                         source={
@@ -60,6 +69,7 @@ const SearchBar = ({ onSearch }) => {
                             : require('../img/close.png')
                         }
                         style={styles.icon}
+                        color={iconMode}
                     />
                 </TouchableOpacity>
             </Animated.View>

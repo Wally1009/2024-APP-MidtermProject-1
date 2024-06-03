@@ -47,6 +47,7 @@ import FashionScreen from "../screens/Fashion/FashionScreen";
 import FashionData from "../json/Fashion.json";
 
 import { selectHasLogin } from "../Redux/accountSlice";
+import { selectColorMode } from "../Redux/accountSlice";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -108,6 +109,9 @@ const MyTab = () => {
 }
 
 const Homestack = ({ navigation }) => {
+    const colorMode = useSelector(selectColorMode);
+    const headerMode = colorMode == "light" ? "black" : "white"
+    const iconMode = colorMode == "light" ? "white" : "black"
     return(
         <Stack.Navigator>
             <Stack.Screen 
@@ -116,7 +120,7 @@ const Homestack = ({ navigation }) => {
                 options={{
                         title:"",
                         headerStyle:{
-                            backgroundColor: "#000000",
+                            backgroundColor: headerMode,
                             height: 60,
                         },
                         headerRight: () => (
@@ -124,7 +128,8 @@ const Homestack = ({ navigation }) => {
                                 <MaterialCommunityIcons
                                     name={'magnify'}
                                     size={24}
-                                    style = {styles.icon} 
+                                    style = {styles.icon}
+                                    color={iconMode} 
                                 />    
                             </Pressable>
                         ),
@@ -134,7 +139,21 @@ const Homestack = ({ navigation }) => {
                 name="Search"
                 component={SearchScreen}
                 options={{
-                    title:"Search",
+                    title:"",
+                    headerStyle:{
+                        backgroundColor:headerMode,
+                        height: 60,
+                    },
+                    headerLeft: () => (
+                        <Pressable onPress={() => navigation.navigate('Home')}>
+                            <MaterialCommunityIcons
+                                name={'chevron-left'}
+                                size={30}
+                                style={{ marginBottom:20 }}
+                                color={iconMode}
+                            />
+                        </Pressable>
+                    ),
                 }}
             />
             
@@ -143,6 +162,9 @@ const Homestack = ({ navigation }) => {
 }
 
 const MenuStack = ({ navigation }) => {
+    const colorMode = useSelector(selectColorMode);
+    const headerMode = colorMode == "light" ? "black" : "white"
+    const iconMode = colorMode == "light" ? "white" : "black"
     return(
         <Stack.Navigator>
             <Stack.Screen 
@@ -151,7 +173,7 @@ const MenuStack = ({ navigation }) => {
                 options={{
                     title:"",
                     headerStyle:{
-                        backgroundColor: "#000000",
+                        backgroundColor: headerMode,
                         height: 60,
                     },
                 }}
@@ -160,7 +182,7 @@ const MenuStack = ({ navigation }) => {
               name="FashionScreen"
               component={FashionScreen}
               options={{
-                title: FashionData.title,
+                title: '',
                 headerTitleStyle: {
                     fontWeight: '400',
                     fontSize: 20,
@@ -170,21 +192,18 @@ const MenuStack = ({ navigation }) => {
             <Stack.Screen
               name="FashionDetailScreen"
               component={FashionDetailScreen}
-              options={({ route }) => ({
-                title: route.params.title,
-                headerTintColor: '#000',
-                headerTitleStyle: {
-                    fontWeight: '400',
-                    fontSize: 20
-                },headerStyle: {
-                    backgroundColor: 'black',
+              options={({  }) => ({
+                title: '',
+                headerStyle:{
+                    backgroundColor:headerMode
                 },
                 headerLeft: () => (
                     <Pressable onPress={() => navigation.navigate('Menu')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
                             size={30}
-                            style={{ marginBottom:20, color: 'white' }}
+                            style={{ marginBottom:20 }}
+                            color={iconMode}
                         />
                     </Pressable>
                 ),
@@ -194,19 +213,17 @@ const MenuStack = ({ navigation }) => {
               name="Women_JacketScreen"
               component={Women_JacketScreen}
               options={{
-                title: WomenJacketData.title,
-                headerTitleStyle: {
-                    fontWeight: '400',
-                    fontSize: 20,
-                },headerStyle: {
-                    backgroundColor: 'black',
+                title: '',
+                headerStyle:{
+                    backgroundColor:headerMode
                 },
                 headerLeft: () => (
                     <Pressable onPress={() => navigation.navigate('Menu')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
                             size={30}
-                            style={{ marginBottom:20, color: 'white' }}
+                            style={{ marginBottom:20 }}
+                            color={iconMode}
                         />
                     </Pressable>
                 ),
@@ -216,20 +233,17 @@ const MenuStack = ({ navigation }) => {
               name="Women_JacketDetailScreen"
               component={Women_JacketDetailScreen}
               options={({ route }) => ({
-                title: route.params.title,
-                headerTintColor: '#000',
-                headerTitleStyle: {
-                    fontWeight: '400',
-                    fontSize: 20
-                },headerStyle: {
-                    backgroundColor: 'black',
+                title: '',
+                headerStyle:{
+                    backgroundColor:headerMode
                 },
                 headerLeft: () => (
-                    <Pressable onPress={() => navigation.navigate('Women_JacketScreen')}>
+                    <Pressable onPress={() => navigation.navigate('Menu')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
                             size={30}
-                            style={{ marginBottom:20, color: 'white' }}
+                            style={{ marginBottom:20 }}
+                            color={iconMode}
                         />
                     </Pressable>
                 ),
@@ -239,19 +253,17 @@ const MenuStack = ({ navigation }) => {
               name="Women_PerfumeScreen"
               component={Women_PerfumeScreen}
               options={{
-                title: WomenPerfumeData.title,
-                headerTitleStyle: {
-                    fontWeight: '400',
-                    fontSize: 20,
-                },headerStyle: {
-                    backgroundColor: 'black',
+                title: '',
+                headerStyle:{
+                    backgroundColor:headerMode
                 },
                 headerLeft: () => (
                     <Pressable onPress={() => navigation.navigate('Menu')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
                             size={30}
-                            style={{ marginBottom:20, color: 'white' }}
+                            style={{ marginBottom:20 }}
+                            color={iconMode}
                         />
                     </Pressable>
                 ),
@@ -261,20 +273,17 @@ const MenuStack = ({ navigation }) => {
               name="Women_PerfumeDetailScreen"
               component={Women_PerfumeDetailScreen}
               options={({ route }) => ({
-                title: route.params.title,
-                headerTintColor: '#000',
-                headerTitleStyle: {
-                    fontWeight: '400',
-                    fontSize: 20
-                },headerStyle: {
-                    backgroundColor: 'black',
+                title: '',
+                headerStyle:{
+                    backgroundColor:headerMode
                 },
                 headerLeft: () => (
-                    <Pressable onPress={() => navigation.navigate('Women_PerfumeScreen')}>
+                    <Pressable onPress={() => navigation.navigate('Menu')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
                             size={30}
-                            style={{ marginBottom:20, color: 'white' }}
+                            style={{ marginBottom:20 }}
+                            color={iconMode}
                         />
                     </Pressable>
                 ),
@@ -284,19 +293,17 @@ const MenuStack = ({ navigation }) => {
               name="Women_TshirtScreen"
               component={Women_TshirtScreen}
               options={{
-                title: WomenTshirtData.title,
-                headerTitleStyle: {
-                    fontWeight: '400',
-                    fontSize: 20,
-                },headerStyle: {
-                    backgroundColor: 'black',
+                title: '',
+                headerStyle:{
+                    backgroundColor:headerMode
                 },
                 headerLeft: () => (
                     <Pressable onPress={() => navigation.navigate('Menu')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
                             size={30}
-                            style={{ marginBottom:20, color: 'white' }}
+                            style={{ marginBottom:20 }}
+                            color={iconMode}
                         />
                     </Pressable>
                 ),
@@ -306,20 +313,17 @@ const MenuStack = ({ navigation }) => {
               name="Women_TshirtDetailScreen"
               component={Women_TshirtDetailScreen}
               options={({ route }) => ({
-                title: route.params.title,
-                headerTintColor: '#000',
-                headerTitleStyle: {
-                    fontWeight: '400',
-                    fontSize: 20
-                },headerStyle: {
-                    backgroundColor: 'black',
+                title: '',
+                headerStyle:{
+                    backgroundColor:headerMode
                 },
                 headerLeft: () => (
-                    <Pressable onPress={() => navigation.navigate('Women_TshirtScreen')}>
+                    <Pressable onPress={() => navigation.navigate('Menu')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
                             size={30}
-                            style={{ marginBottom:20, color: 'white' }}
+                            style={{ marginBottom:20 }}
+                            color={iconMode}
                         />
                     </Pressable>
                 ),
@@ -329,19 +333,17 @@ const MenuStack = ({ navigation }) => {
               name="Women_PantsScreen"
               component={Women_PantsScreen}
               options={{
-                title: WomenPantsData.title,
-                headerTitleStyle: {
-                    fontWeight: '400',
-                    fontSize: 20,
-                },headerStyle: {
-                    backgroundColor: 'black',
+                title: '',
+                headerStyle:{
+                    backgroundColor:headerMode
                 },
                 headerLeft: () => (
                     <Pressable onPress={() => navigation.navigate('Menu')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
                             size={30}
-                            style={{ marginBottom:20, color: 'white' }}
+                            style={{ marginBottom:20 }}
+                            color={iconMode}
                         />
                     </Pressable>
                 ),
@@ -351,20 +353,17 @@ const MenuStack = ({ navigation }) => {
               name="Women_PantsDetailScreen"
               component={Women_PantsDetailScreen}
               options={({ route }) => ({
-                title: route.params.title,
-                headerTintColor: '#000',
-                headerTitleStyle: {
-                    fontWeight: '400',
-                    fontSize: 20
-                },headerStyle: {
-                    backgroundColor: 'black',
+                title: '',
+                headerStyle:{
+                    backgroundColor:headerMode
                 },
                 headerLeft: () => (
-                    <Pressable onPress={() => navigation.navigate('Women_PantsScreen')}>
+                    <Pressable onPress={() => navigation.navigate('Menu')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
                             size={30}
-                            style={{ marginBottom:20, color: 'white' }}
+                            style={{ marginBottom:20 }}
+                            color={iconMode}
                         />
                     </Pressable>
                 ),
@@ -373,19 +372,17 @@ const MenuStack = ({ navigation }) => {
               name="Men_TshirtScreen"
               component={Men_TshirtScreen}
               options={{
-                title: MenTshirtData.title,
-                headerTitleStyle: {
-                    fontWeight: '400',
-                    fontSize: 20,
-                },headerStyle: {
-                    backgroundColor: 'black',
+                title: '',
+                headerStyle:{
+                    backgroundColor:headerMode
                 },
                 headerLeft: () => (
                     <Pressable onPress={() => navigation.navigate('Menu')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
                             size={30}
-                            style={{ marginBottom:20, color: 'white' }}
+                            style={{ marginBottom:20 }}
+                            color={iconMode}
                         />
                     </Pressable>
                 ),
@@ -395,20 +392,17 @@ const MenuStack = ({ navigation }) => {
               name="Men_TshirtDetailScreen"
               component={Men_TshirtDetailScreen}
               options={({ route }) => ({
-                title: route.params.title,
-                headerTintColor: '#000',
-                headerTitleStyle: {
-                    fontWeight: '400',
-                    fontSize: 20
-                },headerStyle: {
-                    backgroundColor: 'black',
+                title: '',
+                headerStyle:{
+                    backgroundColor:headerMode
                 },
                 headerLeft: () => (
-                    <Pressable onPress={() => navigation.navigate('Men_TshirtScreen')}>
+                    <Pressable onPress={() => navigation.navigate('Menu')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
                             size={30}
-                            style={{ marginBottom:20, color: 'white' }}
+                            style={{ marginBottom:20 }}
+                            color={iconMode}
                         />
                     </Pressable>
                 ),
@@ -418,19 +412,17 @@ const MenuStack = ({ navigation }) => {
               name="Men_JacketScreen"
               component={Men_JacketScreen}
               options={{
-                title: MenJacketData.title,
-                headerTitleStyle: {
-                    fontWeight: '400',
-                    fontSize: 20,
-                },headerStyle: {
-                    backgroundColor: 'black',
+                title: '',
+                headerStyle:{
+                    backgroundColor:headerMode
                 },
                 headerLeft: () => (
                     <Pressable onPress={() => navigation.navigate('Menu')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
                             size={30}
-                            style={{ marginBottom:20, color: 'white' }}
+                            style={{ marginBottom:20 }}
+                            color={iconMode}
                         />
                     </Pressable>
                 ),
@@ -440,20 +432,17 @@ const MenuStack = ({ navigation }) => {
               name="Men_JacketDetailScreen"
               component={Men_JacketDetailScreen}
               options={({ route }) => ({
-                title: route.params.title,
-                headerTintColor: '#000',
-                headerTitleStyle: {
-                    fontWeight: '400',
-                    fontSize: 20
-                },headerStyle: {
-                    backgroundColor: 'black',
+                title: '',
+                headerStyle:{
+                    backgroundColor:headerMode
                 },
                 headerLeft: () => (
-                    <Pressable onPress={() => navigation.navigate('Men_JacketScreen')}>
+                    <Pressable onPress={() => navigation.navigate('Menu')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
                             size={30}
-                            style={{ marginBottom:20, color: 'white' }}
+                            style={{ marginBottom:20 }}
+                            color={iconMode}
                         />
                     </Pressable>
                 ),
@@ -463,19 +452,17 @@ const MenuStack = ({ navigation }) => {
               name="Men_PantsScreen"
               component={Men_PantsScreen}
               options={{
-                title: MenPantsData.title,
-                headerTitleStyle: {
-                    fontWeight: '400',
-                    fontSize: 20,
-                },headerStyle: {
-                    backgroundColor: 'black',
+                title: '',
+                headerStyle:{
+                    backgroundColor:headerMode
                 },
                 headerLeft: () => (
                     <Pressable onPress={() => navigation.navigate('Menu')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
                             size={30}
-                            style={{ marginBottom:20, color: 'white' }}
+                            style={{ marginBottom:20 }}
+                            color={iconMode}
                         />
                     </Pressable>
                 ),
@@ -485,20 +472,17 @@ const MenuStack = ({ navigation }) => {
               name="Men_PantsDetailScreen"
               component={Men_PantsDetailScreen}
               options={({ route }) => ({
-                title: route.params.title,
-                headerTintColor: '#000',
-                headerTitleStyle: {
-                    fontWeight: '400',
-                    fontSize: 20
-                },headerStyle: {
-                    backgroundColor: 'black',
+                title: '',
+                headerStyle:{
+                    backgroundColor:headerMode
                 },
                 headerLeft: () => (
-                    <Pressable onPress={() => navigation.navigate('Men_PantsScreen')}>
+                    <Pressable onPress={() => navigation.navigate('Menu')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
                             size={30}
-                            style={{ marginBottom:20, color: 'white' }}
+                            style={{ marginBottom:20 }}
+                            color={iconMode}
                         />
                     </Pressable>
                 ),
@@ -508,19 +492,17 @@ const MenuStack = ({ navigation }) => {
               name="Men_PerfumeScreen"
               component={Men_PerfumeScreen}
               options={{
-                title: MenPerfumeData.title,
-                headerTitleStyle: {
-                    fontWeight: '400',
-                    fontSize: 20,
-                },headerStyle: {
-                    backgroundColor: 'black',
+                title: '',
+                headerStyle:{
+                    backgroundColor:headerMode
                 },
                 headerLeft: () => (
                     <Pressable onPress={() => navigation.navigate('Menu')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
                             size={30}
-                            style={{ marginBottom:20, color: 'white' }}
+                            style={{ marginBottom:20 }}
+                            color={iconMode}
                         />
                     </Pressable>
                 ),
@@ -529,21 +511,18 @@ const MenuStack = ({ navigation }) => {
             <Stack.Screen
               name="Men_PerfumeDetailScreen"
               component={Men_PerfumeDetailScreen}
-              options={({ route }) => ({
-                title: route.params.title,
-                headerTintColor: '#000',
-                headerTitleStyle: {
-                    fontWeight: '400',
-                    fontSize: 20
-                },headerStyle: {
-                    backgroundColor: 'black',
+              options={({  }) => ({
+                title: '',
+                headerStyle:{
+                    backgroundColor:headerMode
                 },
                 headerLeft: () => (
-                    <Pressable onPress={() => navigation.navigate('Men_PerfumeScreen')}>
+                    <Pressable onPress={() => navigation.navigate('Menu')}>
                         <MaterialCommunityIcons
                             name={'chevron-left'}
                             size={30}
-                            style={{ marginBottom:20, color: 'white' }}
+                            style={{ marginBottom:20 }}
+                            color={iconMode}
                         />
                     </Pressable>
                 ),
@@ -554,6 +533,9 @@ const MenuStack = ({ navigation }) => {
 }
 
 const Cartstack =({ navigation }) => {
+    const colorMode = useSelector(selectColorMode);
+    const headerMode = colorMode == "light" ? "black" : "white"
+    const iconMode = colorMode == "light" ? "white" : "black"
     return(
         <Stack.Navigator>
             <Stack.Screen  
@@ -562,7 +544,7 @@ const Cartstack =({ navigation }) => {
                 options={{
                     title:"",
                     headerStyle:{
-                        backgroundColor: "#000000",
+                        backgroundColor: headerMode,
                         height: 60,
                     },
                     headerRight: () => (
@@ -571,6 +553,7 @@ const Cartstack =({ navigation }) => {
                                 name={'heart-outline'}
                                 size={24}
                                 style={styles.icon}
+                                color={iconMode}
                             />
                         </Pressable>
                     ),
@@ -579,109 +562,181 @@ const Cartstack =({ navigation }) => {
             <Stack.Screen
                 name="Women_JacketDetailScreen"
                 component={Women_JacketDetailScreen}
-                options={({ route }) => ({
-                    title: route.params.title,
-                    headerTintColor: '#000',
-                    headerTitleStyle: {
-                        fontWeight: '400',
-                        fontSize: 20
+                options={({  }) => ({
+                    title: '',
+                    headerStyle:{
+                        backgroundColor:headerMode
                     },
+                    headerLeft: () => (
+                        <Pressable onPress={() => navigation.navigate('Cart')}>
+                            <MaterialCommunityIcons
+                                name={'chevron-left'}
+                                size={30}
+                                style={{ marginBottom:20 }}
+                                color={iconMode}
+                            />
+                        </Pressable>
+                    ),
                 })}
             />
             <Stack.Screen
                 name="Women_PerfumeDetailScreen"
                 component={Women_PerfumeDetailScreen}
-                options={({ route }) => ({
-                    title: route.params.title,
-                    headerTintColor: '#000',
-                    headerTitleStyle: {
-                        fontWeight: '400',
-                        fontSize: 20
+                options={({  }) => ({
+                    title: '',
+                    headerStyle:{
+                        backgroundColor:headerMode
                     },
+                    headerLeft: () => (
+                        <Pressable onPress={() => navigation.navigate('Cart')}>
+                            <MaterialCommunityIcons
+                                name={'chevron-left'}
+                                size={30}
+                                style={{ marginBottom:20 }}
+                                color={iconMode}
+                            />
+                        </Pressable>
+                    ),
                 })}
             />
             <Stack.Screen
                 name="Women_TshirtDetailScreen"
                 component={Women_TshirtDetailScreen}
-                options={({ route }) => ({
-                    title: route.params.title,
-                    headerTintColor: '#000',
-                    headerTitleStyle: {
-                        fontWeight: '400',
-                        fontSize: 20
+                options={({  }) => ({
+                    title: '',
+                    headerStyle:{
+                        backgroundColor:headerMode
                     },
+                    headerLeft: () => (
+                        <Pressable onPress={() => navigation.navigate('Cart')}>
+                            <MaterialCommunityIcons
+                                name={'chevron-left'}
+                                size={30}
+                                style={{ marginBottom:20 }}
+                                color={iconMode}
+                            />
+                        </Pressable>
+                    ),
                 })}
             />
             <Stack.Screen
                 name="Women_PantsDetailScreen"
                 component={Women_PantsDetailScreen}
-                options={({ route }) => ({
-                    title: route.params.title,
-                    headerTintColor: '#000',
-                    headerTitleStyle: {
-                        fontWeight: '400',
-                        fontSize: 20
+                options={({  }) => ({
+                    title: '',
+                    headerStyle:{
+                        backgroundColor:headerMode
                     },
+                    headerLeft: () => (
+                        <Pressable onPress={() => navigation.navigate('Cart')}>
+                            <MaterialCommunityIcons
+                                name={'chevron-left'}
+                                size={30}
+                                style={{ marginBottom:20 }}
+                                color={iconMode}
+                            />
+                        </Pressable>
+                    ),
                 })}
             />
             <Stack.Screen
                 name="Men_TshirtDetailScreen"
                 component={Men_TshirtDetailScreen}
-                options={({ route }) => ({
-                    title: route.params.title,
-                    headerTintColor: '#000',
-                    headerTitleStyle: {
-                        fontWeight: '400',
-                        fontSize: 20
+                options={({  }) => ({
+                    title: '',
+                    headerStyle:{
+                        backgroundColor:headerMode
                     },
+                    headerLeft: () => (
+                        <Pressable onPress={() => navigation.navigate('Cart')}>
+                            <MaterialCommunityIcons
+                                name={'chevron-left'}
+                                size={30}
+                                style={{ marginBottom:20 }}
+                                color={iconMode}
+                            />
+                        </Pressable>
+                    ),
                 })}
             />
             <Stack.Screen
                 name="Men_JacketDetailScreen"
                 component={Men_JacketDetailScreen}
-                options={({ route }) => ({
-                    title: route.params.title,
-                    headerTintColor: '#000',
-                    headerTitleStyle: {
-                        fontWeight: '400',
-                        fontSize: 20
+                options={({  }) => ({
+                    title: '',
+                    headerStyle:{
+                        backgroundColor:headerMode
                     },
+                    headerLeft: () => (
+                        <Pressable onPress={() => navigation.navigate('Cart')}>
+                            <MaterialCommunityIcons
+                                name={'chevron-left'}
+                                size={30}
+                                style={{ marginBottom:20 }}
+                                color={iconMode}
+                            />
+                        </Pressable>
+                    ),
                 })}
             />
             <Stack.Screen
                 name="Men_PantsDetailScreen"
                 component={Men_PantsDetailScreen}
-                options={({ route }) => ({
-                    title: route.params.title,
-                    headerTintColor: '#000',
-                    headerTitleStyle: {
-                        fontWeight: '400',
-                        fontSize: 20
+                options={({  }) => ({
+                    title: '',
+                    headerStyle:{
+                        backgroundColor:headerMode
                     },
+                    headerLeft: () => (
+                        <Pressable onPress={() => navigation.navigate('Cart')}>
+                            <MaterialCommunityIcons
+                                name={'chevron-left'}
+                                size={30}
+                                style={{ marginBottom:20 }}
+                                color={iconMode}
+                            />
+                        </Pressable>
+                    ),
                 })}
             />
             <Stack.Screen
                 name="Men_PerfumeDetailScreen"
                 component={Men_PerfumeDetailScreen}
-                options={({ route }) => ({
-                    title: route.params.title,
-                    headerTintColor: '#000',
-                    headerTitleStyle: {
-                        fontWeight: '400',
-                        fontSize: 20
+                options={({  }) => ({
+                    title: '',
+                    headerStyle:{
+                        backgroundColor:headerMode
                     },
+                    headerLeft: () => (
+                        <Pressable onPress={() => navigation.navigate('Cart')}>
+                            <MaterialCommunityIcons
+                                name={'chevron-left'}
+                                size={30}
+                                style={{ marginBottom:20 }}
+                                color={iconMode}
+                            />
+                        </Pressable>
+                    ),
                 })}
             />
             <Stack.Screen
                 name="FashionDetailScreen"
                 component={FashionDetailScreen}
-                options={({ route }) => ({
-                    title: route.params.title,
-                    headerTintColor: '#000',
-                    headerTitleStyle: {
-                        fontWeight: '400',
-                        fontSize: 20
+                options={({}) => ({
+                    title: '',
+                    headerStyle:{
+                        backgroundColor:headerMode
                     },
+                    headerLeft: () => (
+                        <Pressable onPress={() => navigation.navigate('Cart')}>
+                            <MaterialCommunityIcons
+                                name={'chevron-left'}
+                                size={30}
+                                style={{ marginBottom:20 }}
+                                color={iconMode}
+                            />
+                        </Pressable>
+                    ),
                 })}
             />
             <Stack.Screen
@@ -690,15 +745,16 @@ const Cartstack =({ navigation }) => {
                 options={{
                     title:"",
                     headerStyle:{
-                        backgroundColor: "#000000",
+                        backgroundColor: headerMode,
                         height: 60,
                     },
-                    headerRight: () => (
+                    headerLeft: () => (
                         <Pressable onPress={() => navigation.navigate('Cart')}>
                             <MaterialCommunityIcons
                                 name={'cart-outline'}
                                 size={24}
                                 style={styles.icon}
+                                color={iconMode}
                             />
                         </Pressable>
                     ),
@@ -709,6 +765,9 @@ const Cartstack =({ navigation }) => {
 }
 
 const Settingstack = ({ navigation }) => {
+    const colorMode = useSelector(selectColorMode);
+    const headerMode = colorMode == "light" ? "black" : "white"
+    const iconMode = colorMode == "light" ? "white" : "black"
     return(
         <Stack.Navigator>
             <Stack.Screen 
@@ -717,7 +776,7 @@ const Settingstack = ({ navigation }) => {
                 options={{
                         title:"",
                         headerStyle:{
-                            backgroundColor: "#000000",
+                            backgroundColor: headerMode,
                             height: 60,
                         },
                     }}
@@ -728,8 +787,19 @@ const Settingstack = ({ navigation }) => {
                 options={{
                     title:"",
                     headerStyle:{
+                        backgroundColor:headerMode,
                         height: 60,
                     },
+                    headerLeft: () => (
+                        <Pressable onPress={() => navigation.navigate('Settings')}>
+                            <MaterialCommunityIcons
+                                name={'chevron-left'}
+                                size={30}
+                                style={{ marginBottom:20 }}
+                                color={iconMode}
+                            />
+                        </Pressable>
+                    ),
                 }}
             />
             <Stack.Screen
@@ -738,8 +808,19 @@ const Settingstack = ({ navigation }) => {
                 options={{
                     title:"",
                     headerStyle:{
+                        backgroundColor: headerMode,
                         height: 60,
                     },
+                    headerLeft: () => (
+                        <Pressable onPress={() => navigation.navigate('Settings')}>
+                            <MaterialCommunityIcons
+                                name={'chevron-left'}
+                                size={30}
+                                style={{ marginBottom:20 }}
+                                color={iconMode}
+                            />
+                        </Pressable>
+                    ),
                 }}
             />
         </Stack.Navigator>
@@ -749,8 +830,8 @@ const Settingstack = ({ navigation }) => {
 const styles = StyleSheet.create({
     icon:{
         marginRight:10,
+        marginLeft:10,
         marginBottom:20,
-        color:'#FFFFFF',
     },
 })
 

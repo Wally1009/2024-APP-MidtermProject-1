@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { Appearance } from "react-native";
 
 // Part1: Define Slice (including reducers and actions)
 const initialState = {
@@ -9,9 +10,7 @@ const initialState = {
    login: {
       hasLogin: false,
    },
-   darkMode: {
-      isDarkMode: false,
-   },
+   colorMode: "light",
 };
 
 const accountSlice = createSlice({
@@ -27,8 +26,9 @@ const accountSlice = createSlice({
       logout: (state) => {
          state.login.hasLogin = false;
       },
-      toggleDarkMode:(state) => {
-         state.darkMode.isDarkMode = state.darkMode.isDarkMode === false ? true : false;
+      toggleColorMode:(state) => {
+         state.colorMode = state.colorMode === "light" ? "dark" : "light";
+         Appearance.setColorScheme(state.colorMode);
       },
    },
 });
@@ -36,10 +36,10 @@ const accountSlice = createSlice({
 // export state to global
 export const selectGeneral = (state) => state.account.general;
 export const selectHasLogin = (state) => state.account.login.hasLogin;
-export const selectIsDarkMode = (state) => state.account.darkMode.isDarkMode;
+export const selectColorMode = (state) => state.account.colorMode;
 
 // export actions to global
-export const { setGeneralAccountInfo, login, logout, toggleDarkMode } = accountSlice.actions;
+export const { setGeneralAccountInfo, login, logout, toggleColorMode } = accountSlice.actions;
 
 // export reducer to global
 export default accountSlice.reducer;

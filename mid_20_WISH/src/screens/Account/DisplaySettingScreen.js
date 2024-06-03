@@ -1,4 +1,4 @@
-import { Appearance, Dimensions, useColorScheme } from "react-native";
+import { Dimensions } from "react-native";
 import { Center, Box, Text, Pressable } from "@gluestack-ui/themed";
 import Animated, {
   interpolateColor,
@@ -8,8 +8,8 @@ import Animated, {
 } from "react-native-reanimated";
 import Ionicon from "react-native-vector-icons/Ionicons";
 import { useDispatch, useSelector } from "react-redux";
-import { selectIsDarkMode } from "../../Redux/accountSlice";
-import { toggleDarkMode } from "../../Redux/accountSlice";
+import { selectColorMode } from "../../Redux/accountSlice";
+import { toggleColorMode } from "../../Redux/accountSlice";
 
 const AnimatedBox = Animated.createAnimatedComponent(Box);
 const AnimatedCenter = Animated.createAnimatedComponent(Center);
@@ -33,17 +33,16 @@ const Colors = {
   },
 };
 const DisplaySettingScreen = () => {
-    const isDarkMode = useSelector(selectIsDarkMode);
+    const colorMode = useSelector(selectColorMode);
     const dispatch = useDispatch();
-    const colorScheme = useColorScheme();
 
-    const toggleColorMode = () => {
-      const nextColorScheme = colorScheme === "light" ? "dark" : "light";
-      Appearance.setColorScheme(nextColorScheme);
-    };
+    // const toggleColorMode = () => {
+    //   const nextColorScheme = colorMode === "light" ? "dark" : "light";
+    //   Appearance.setColorScheme(nextColorScheme);
+    // };
   
     const progress = useDerivedValue(() => {
-      return withTiming(colorScheme === "dark" ? 1 : 0, { duration: 2000 });
+      return withTiming(colorMode === "dark" ? 1 : 0, { duration: 2000 });
     });
   
     const animatedStyle = useAnimatedStyle(() => {
@@ -98,7 +97,7 @@ const DisplaySettingScreen = () => {
           marginBottom={35}
           style={animatedTextStyle}
         >
-          darkMode
+          {colorMode == "light" ? "Light Mode" : "Dark Mode"}
         </AnimatedText>
         <AnimatedCenter
           w={WIDTH}
@@ -107,10 +106,10 @@ const DisplaySettingScreen = () => {
           shadow="4"
           style={animatedCircleStyle}
         >
-          <Pressable onPress={toggleColorMode}>
+          <Pressable onPress={() => dispatch(toggleColorMode())}>
             <AnimatedBox borderRadius={40} style={animatedIconStyle}>
               <AnimatedIonicon
-                name={colorScheme == "dark" ? "moon-outline" : "sunny-outline"}
+                name={colorMode == "dark" ? "moon-outline" : "sunny-outline"}
                 size={40}
                 style={animatedTextStyle}
               />

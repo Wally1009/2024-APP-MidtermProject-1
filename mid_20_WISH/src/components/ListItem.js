@@ -1,9 +1,13 @@
 import React from 'react';
 import { Text, HStack, Pressable } from '@gluestack-ui/themed';
 import { useNavigation } from '@react-navigation/native';
+import { useSelector } from "react-redux";
+import { selectColorMode } from "../Redux/accountSlice";
 
 const ListItem = ({ title, destination }) => {
   const { navigate } = useNavigation();
+  const colorMode = useSelector(selectColorMode);
+  const textMode = colorMode == 'light' ? 'black' : 'white'
    return (
      <Pressable
        onPress={() => {
@@ -16,7 +20,7 @@ const ListItem = ({ title, destination }) => {
          px="$4"
          justifyContent="center"
        >
-         <Text size={16}>{title}</Text>
+         <Text size={16} color={textMode}>{title}</Text>
          
        </HStack>
      </Pressable>

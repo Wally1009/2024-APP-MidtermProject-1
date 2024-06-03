@@ -21,6 +21,7 @@ import { selectGeneral } from "../../Redux/accountSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../Redux/accountSlice";
 
+
 const AccountScreen = () => {
     const general = useSelector(selectGeneral);
     const dispatch = useDispatch();
